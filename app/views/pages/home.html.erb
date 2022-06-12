@@ -1,2 +1,21 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<section class="wrapper">
+  <div class="banner">
+    <div class="banner-content">
+      <h1>Find solutions for your issues</h1>
+      <p>Search for an issue that you've been stuck on and find solutions posted by the Le Wagon alumni community!</p>
+      <!-- <p>Support the Le Wagon community by uploading solutions for issues you’ve come across in your time as a developer.</p> -->
+      <div class="banner-form">
+        <%= form_tag issues_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query, params[:query], class: "form-control form-input inline-form", placeholder: "What issue are you having?" %>
+          <%= submit_tag "SEARCH", class: "btn form-btn" %>
+        <% end %>
+      </div>
+    </div>
+    <%= image_tag 'hero-image.png', class: 'banner-image', alt: 'Couple of codebreakers' %>
+  </div>
+</section>
+<section class="bg-purple">
+  <div class="wrapper wrapper-p">
+    <div class="" style="height: 500px;"></div>
+  </div>
+</section>
