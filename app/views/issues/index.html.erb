@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <div class="issues-container">
+    <% if params[:query] %>
+      <h6>Displaying <%= @issues.count %> results</h6>
+    <% end %>
+    <% @issues.each do |issue| %>
+      <%= link_to issue_path(issue), style: 'text-decoration: none; color: inherit;' do %>
+        <div class="issues-card">
+          <h4 class="mb-4"><%= issue.title %></h4>
+          <h6 class="mb-0">Error Message:</h6>
+          <p class="mb-0"><%= issue.error_message %> </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

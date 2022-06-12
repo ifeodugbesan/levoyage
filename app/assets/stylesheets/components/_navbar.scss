@@ -1,12 +1,84 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.navbar-container {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 48px;
+}
+
+.navbar-brand {
+  padding: 0;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-light .navbar-nav .nav-link {
+  color: #000000;
+}
+
+.navbar-toggler {
+  border: none;
+  padding: 0 4px 6px;
+  &:focus{
+    box-shadow: none;
+  }
+}
+
+.nav-link {
+  margin-right: 8px;
+  font-size: 14px;
+  font-weight: 200;
+  color: #000000;
+}
+
+.nav-item:last-of-type {
+  .nav-link {
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+.offcanvas {
+  transition: transform 0.2s ease-in-out;
+}
+
+.offcanvas-backdrop.show {
+  opacity: 0 !important;
+}
+
+.offcanvas-body {
+  @include media-breakpoint-down(sm) {
+    justify-content: flex-end;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .offcanvas {
+    padding: 0 32px;
+
+  }
+  .offcanvas-end {
+    width: 100%;
+    padding-top: 30px;
+  }
+
+  .offcanvas-header {
+    padding: 8px 2px 8px 0;
+  }
+
+  .offcanvas-body {
+    padding: 16px 0;
+  }
 }
