@@ -36,6 +36,9 @@ gem 'acts-as-taggable-on', '~> 9.0'
 # PG Search
 gem 'pg_search', '~> 2.3.0'
 
+# Friendly
+gem 'friendly_id', '~> 5.4.0'
+
 # Github OmniAuth
 # gem 'omniauth-github'
 # gem 'omniauth-rails_csrf_protection'

@@ -2,6 +2,8 @@ class Issue < ApplicationRecord
   belongs_to :user
   has_rich_text :content
   acts_as_taggable_on :tags
+  extend FriendlyId
+  friendly_id :title, use: :slugged
   include PgSearch::Model
   pg_search_scope :search_by_fields,
     against: [ :title, :error_message ],
