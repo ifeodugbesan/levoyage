@@ -1,7 +1,18 @@
 <div class="wrapper">
   <div class="issues-container">
-    <% if params[:query] %>
-      <h6>Displaying <%= @issues.count %> results</h6>
+    <%= simple_form_for :search, url: issues_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+      <%= f.input :query, label: false, input_html: {value: params[:search][:query]} %>
+      <fieldset class="mb-3 check_boxes required search_tags">
+        <legend class="col-form-label pt-0">Tags</legend>
+        <input type="hidden" name="search[tags][]" value="" autocomplete="off">
+        <% ActsAsTaggableOn::Tag.all.each do |tag| %>
+          <div class="tag-item">
+            <input class="form-check-input check_boxes required tag-selector" type="checkbox" value="<%= tag.name %>" name="search[tags][]" id="search_tags_<%= tag.name %>" onchange="this.form.submit();" <%= 'checked' if params[:search][:tags]&.include?(tag.name) %>>
+            <label class="form-check-label collection_check_boxes" for="search_tags_<%= tag.name %>"><%= tag.name %></label>
+          </div>
+        <% end %>
+      </fieldset>
+      <%= f.submit "Search", class: "btn btn-primary" %>
     <% end %>
     <% @issues.each do |issue| %>
       <%= link_to issue_path(issue), style: 'text-decoration: none; color: inherit;' do %>

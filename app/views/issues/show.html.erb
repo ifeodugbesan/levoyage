@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <div class="issues-container">
+    <h1 class="mb-5"><%= @issue.title %></h1>
+    <h6>Error Message:</h6>
+    <h4 class="mb-5"><%= @issue.error_message %></h4>
+    <h6>Content:</h6>
+    <p class="mb-5"><%= @issue.content %></p>
+    <h6 class="mb-4">Tags:</h6>
+    <% @issue.tags.each do |tag| %>
+      <span class="tag"><%= tag.name %></span>
+    <% end %>
+  </div>
+</div>

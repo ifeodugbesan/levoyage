@@ -1,0 +1,90 @@
+.tag {
+  display: inline-block;
+  padding: 4px 14px;
+  background-color: #DCB9FF;
+  border: 1px solid #590CA3;
+  border-radius: 20px;
+  color: #590CA3;
+  font-weight: 200;
+  margin-right: 6px;
+}
+
+// SELECT 2
+
+.select2-container--default .select2-selection--multiple {
+  min-height: 54px;
+  border: none;
+  border-radius: 10px;
+  background-color: #F4F4F4;
+  padding: 0.375rem 0.75rem;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  border: none;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  display: inline-block;
+  padding: 4px 14px 4px 40px;
+  background-color: #DCB9FF;
+  border: 1px solid #590CA3;
+  border-radius: 20px;
+  color: #590CA3;
+  font-weight: 200;
+  margin-left: 4px;
+  margin-top: 4px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  height: 100%;
+  padding: 0 8px 0px 10px;
+  color: #590CA3;
+  border-color: #590CA3;
+  font-weight: 200;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+  background-color: #6620AC;
+}
+
+.select2-container--default .select2-results__option--selected {
+  background-color: #DBB9FF;
+  color: #350862;
+}
+
+.select2-dropdown {
+  border-color: #F4F4F4;
+}
+
+// ADVANCED CHECKBOXES
+
+.tag-item {
+  display: inline-block;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.tag-selector + label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 200;
+  padding: 4px 14px;
+  border-radius: 50rem;
+  background-color: #ffffff;
+  color: #580DA3;
+  border: 1px solid #580DA3;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+  &:hover {
+    background-color: #DCB9FF;
+  }
+}
+
+.tag-selector:checked + label {
+  background-color: #580DA3;
+  color: white;
+}

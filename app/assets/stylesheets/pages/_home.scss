@@ -35,6 +35,10 @@
   position: relative;
 }
 
+.search_query {
+  width: 100%;
+}
+
 .banner-image {
   width: 500px;
   border-radius: 6px;
@@ -80,6 +84,19 @@
   }
   @include media-breakpoint-down(sm) {
     justify-content: center;
+  }
+}
+
+.home-support {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  p {
+    color: #F0E0FF;
+    font-weight: 200;
+    font-size: 18px;
+    width: 400px;
   }
 }
 
