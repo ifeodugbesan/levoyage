@@ -25,7 +25,7 @@
         <div class="offcanvas-body">
            <ul class="navbar-nav justify-content-end flex-grow-1">
             <li class="nav-item active">
-              <%= link_to "ISSUES", issues_path, class: "nav-link" %>
+              <%= link_to "ISSUES", issues_path(search: { query: "" }), class: "nav-link" %>
             </li>
             <li class="nav-item active">
               <%= link_to "RESOURCES", resources_path, class: "nav-link" %>

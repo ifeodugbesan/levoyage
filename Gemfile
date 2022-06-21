@@ -39,6 +39,9 @@ gem 'pg_search', '~> 2.3.0'
 # Friendly
 gem 'friendly_id', '~> 5.4.0'
 
+# Pundit
+gem 'pundit'
+
 # Github OmniAuth
 # gem 'omniauth-github'
 # gem 'omniauth-rails_csrf_protection'

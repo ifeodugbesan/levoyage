@@ -1,4 +1,7 @@
 <div class="wrapper">
+  <% if policy(Issue).create? %>
+    <%= link_to "Add Issue", new_issue_path %>
+  <% end %>
   <div class="issues-container">
     <%= simple_form_for :search, url: issues_path, method: "GET", html: { class: 'form-inline' } do |f| %>
       <%= f.input :query, label: false, input_html: {value: params[:search][:query]} %>
@@ -12,7 +15,6 @@
           </div>
         <% end %>
       </fieldset>
-      <%= f.submit "Search", class: "btn btn-primary" %>
     <% end %>
     <% @issues.each do |issue| %>
       <%= link_to issue_path(issue), style: 'text-decoration: none; color: inherit;' do %>
