@@ -6,38 +6,56 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require 'faker'
+
 ActsAsTaggableOn::Tag.destroy_all
 Issue.destroy_all
 User.destroy_all
 
 
 user = User.create!(email: 'ife@gmail.com', password: 123456)
+sarah = User.create!(email: 'sarah@gmail.com', password: 123456)
 puts 'created user'
 
+tags = []
+
 tag1 = ActsAsTaggableOn::Tag.create(name: 'ruby')
+tags << tag1
 tag2 = ActsAsTaggableOn::Tag.create(name: 'rails')
+tags << tag2
 tag3 = ActsAsTaggableOn::Tag.create(name: 'javascript')
+tags << tag3
 tag4 = ActsAsTaggableOn::Tag.create(name: 'html')
+tags << tag4
 tag5 = ActsAsTaggableOn::Tag.create(name: 'css')
+tags << tag5
 tag6 = ActsAsTaggableOn::Tag.create(name: 'rails')
-puts 'created tags'
+tags << tag6
+tag7 = ActsAsTaggableOn::Tag.create(name: 'github')
+tags << tag7
+tag8 = ActsAsTaggableOn::Tag.create(name: 'heroku')
+tags << tag8
 
-issue = Issue.new(
-              title: "Can’t run yarn build —watch",
-              error_message: "error Command 'build' not found.",
-              content: "It's possible that you may be missing a script in your package.json which allows you to run build.
-                        Try adding this code into the object in your package.json",
-              user: user
-            )
+30.times do
+  tag = ActsAsTaggableOn::Tag.create(name: Faker::DcComics.hero.downcase)
+  tags << tag
+  puts "created the tag #{tag.name}"
+end
 
-issue.tag_list.add(tag1)
-issue.tag_list.add(tag2)
-issue.tag_list.add(tag3)
-issue.tag_list.add(tag4)
-issue.tag_list.add(tag5)
-issue.tag_list.add(tag6)
 
-issue.save!
+50.times do
+  issue = Issue.new(
+                title: Faker::DcComics.title,
+                error_message: Faker::Movie.quote,
+                content: Faker::Quote.famous_last_words,
+                user: user
+              )
+  tags.sample((0..12).to_a.sample).each do |tag|
+    issue.tag_list.add(tag)
+  end
 
-puts 'created issue'
+  issue.save!
+  puts "created the issue #{issue.title}"
+end
+
 

@@ -2,6 +2,8 @@ class Issue < ApplicationRecord
   belongs_to :user
   has_rich_text :content
   acts_as_taggable_on :tags
+  acts_as_votable
+  paginates_per 10
   extend FriendlyId
   friendly_id :title, use: :slugged
   include PgSearch::Model

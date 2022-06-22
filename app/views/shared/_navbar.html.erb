@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="navbar-container">
       <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag 'le-voyage-logo.png', class: 'logo', alt: 'Le Wagon logo' %>
+        <%= image_tag 'le-voyage-logo.png', class: 'logo', alt: 'Le voyage logo' %>
       <% end %>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="11" version="1.1" viewBox="0 0 18 11">
@@ -17,7 +17,7 @@
       </button>
       <div class="offcanvas offcanvas-end <%= 'bg-cream' if params[:action] == 'prizes' %>" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
-          <h1 class="codebreaker-font m-0">Le Voyage</h1>
+          <%= image_tag 'le-voyage-text.png', alt: 'Le voyage text', height: 24 %>
           <div data-bs-dismiss="offcanvas" aria-label="Close">
             <%= image_tag 'cross.svg', width: 14 %>
           </div>

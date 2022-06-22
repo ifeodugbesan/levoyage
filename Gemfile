@@ -42,6 +42,15 @@ gem 'friendly_id', '~> 5.4.0'
 # Pundit
 gem 'pundit'
 
+# Faker
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+# Kaminari
+gem 'kaminari'
+
+# Act as votable
+gem 'acts_as_votable'
+
 # Github OmniAuth
 # gem 'omniauth-github'
 # gem 'omniauth-rails_csrf_protection'

@@ -14,3 +14,10 @@
     background: linear-gradient(to right, #45097F, #860911);
   }
 }
+
+.text-link {
+  display: inline-flex;
+  background: -webkit-linear-gradient(0deg, #590CA3, #A30C15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

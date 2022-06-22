@@ -1,29 +1,77 @@
-<div class="wrapper">
-  <% if policy(Issue).create? %>
-    <%= link_to "Add Issue", new_issue_path %>
-  <% end %>
-  <div class="issues-container">
+<div class="wrapper" data-controller="issues">
+  <div class="issues-wrapper">
+    <%= link_to 'https://www.instagram.com/kobrasfc/', target: '_blank' do %>
+      <div class="top-ad" style="background-image: url(<%= asset_path 'kobra-ad.png' %>)"></div>
+    <% end %>
     <%= simple_form_for :search, url: issues_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-      <%= f.input :query, label: false, input_html: {value: params[:search][:query]} %>
-      <fieldset class="mb-3 check_boxes required search_tags">
-        <legend class="col-form-label pt-0">Tags</legend>
-        <input type="hidden" name="search[tags][]" value="" autocomplete="off">
-        <% ActsAsTaggableOn::Tag.all.each do |tag| %>
-          <div class="tag-item">
-            <input class="form-check-input check_boxes required tag-selector" type="checkbox" value="<%= tag.name %>" name="search[tags][]" id="search_tags_<%= tag.name %>" onchange="this.form.submit();" <%= 'checked' if params[:search][:tags]&.include?(tag.name) %>>
-            <label class="form-check-label collection_check_boxes" for="search_tags_<%= tag.name %>"><%= tag.name %></label>
+      <%= f.input :query, label: false, placeholder: "What issue are you having?", input_html: { class: 'form-input', value: params[:search][:query] } %>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" data-issues-target="tagsBtn">
+              Tags
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" data-issues-target="tags">
+            <div class="accordion-body">
+              <fieldset class="mb-3 check_boxes required search_tags">
+                <input type="hidden" name="search[tags][]" value="" autocomplete="off">
+                <% ActsAsTaggableOn::Tag.all.each do |tag| %>
+                  <div class="tag-item">
+                    <input class="form-check-input check_boxes required tag-selector" type="checkbox" value="<%= tag.name %>" name="search[tags][]" id="search_tags_<%= tag.name %>" onchange="this.form.submit();" <%= 'checked' if params[:search][:tags]&.include?(tag.name) %>>
+                    <label class="form-check-label collection_check_boxes" for="search_tags_<%= tag.name %>"><%= tag.name %></label>
+                  </div>
+                <% end %>
+              </fieldset>
+            </div>
           </div>
-        <% end %>
-      </fieldset>
-    <% end %>
-    <% @issues.each do |issue| %>
-      <%= link_to issue_path(issue), style: 'text-decoration: none; color: inherit;' do %>
-        <div class="issues-card">
-          <h4 class="mb-4"><%= issue.title %></h4>
-          <h6 class="mb-0">Error Message:</h6>
-          <p class="mb-0"><%= issue.error_message %> </p>
         </div>
-      <% end %>
+      </div>
     <% end %>
+    <div class="d-flex">
+      <div class="issues-container">
+        <div class="results">
+          <span>
+            <%= page_entries_info @issues %>
+          </span>
+          <% if policy(Issue).create? %>
+            <%= link_to new_issue_path, class: "text-link" do %>
+              <span class="new-issue">ADD ISSUE <i class="bi bi-plus-lg"></i></span>
+            <% end %>
+          <% end %>
+        </div>
+        <% @issues.each do |issue| %>
+          <%= link_to issue_path(issue), style: 'text-decoration: none; color: inherit;' do %>
+            <div class="issue-card-container">
+              <div id="issueCard<%= issue.id %>" class="issues-card">
+                <div class="d-flex justify-content-between w-100">
+                  <div class="flex-grow-1">
+                    <h4 class="mb-4"><%= issue.title %></h4>
+                    <h6 class="mb-0">Error Message:</h6>
+                    <p class="mb-0"><%= issue.error_message %></p>
+                    <% if issue.tags.any? %>
+                      <div class="pt-3">
+                        <% issue.tags.each do |tag| %>
+                          <span class="tag tag-small <%= render 'tag_class', tag: tag %>"><%= tag.name %><%= render 'tag_icons', tag: tag %></span>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <%= render 'votes', issue: issue %>
+            </div>
+          <% end %>
+        <% end %>
+        <div class="my-5 d-flex justify-content-center">
+          <%= paginate @issues %>
+        </div>
+      </div>
+      <div class="side-ad-container">
+        <%= link_to 'https://www.myfootprint.ai/business', target: '_blank' do  %>
+          <div class="side-ad" style="background-image: url(<%= asset_path 'myfootprint.png' %>)"></div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

@@ -3,10 +3,9 @@ class IssuesController < ApplicationController
 
   def index
     @issues = policy_scope(Issue)
-    if params[:search].present?
-      @issues = @issues.search_by_fields(params[:search][:query]) if params[:search][:query].present? && params[:search][:query] != ""
-      @issues = @issues.tagged_with(params[:search][:tags], :any => true) if params[:search][:tags].present? && params[:search][:tags] != [""]
-    end
+    @issues = @issues.search_by_fields(params[:search][:query]) if params[:search][:query].present? && params[:search][:query] != ""
+    @issues = @issues.tagged_with(params[:search][:tags], :any => true) if params[:search][:tags].present? && params[:search][:tags] != [""]
+    @issues = @issues.page params[:page]
   end
 
   def show
@@ -22,8 +21,9 @@ class IssuesController < ApplicationController
   def create
     @issue = Issue.create(issue_params)
     @issue.user = current_user
-    params[:issue][:tags].reject(&:blank?).each { |tag| @issue.tag_list.add(tag) }
+    params[:issue][:tags].reject(&:blank?).each { |tag| @issue.tag_list.add(tag.downcase) }
     if @issue.save!
+      authorize @issue
       redirect_to issue_path(@issue)
     else
       render :new
@@ -32,6 +32,7 @@ class IssuesController < ApplicationController
 
   def edit
     @issue = Issue.friendly.find(params[:id])
+    authorize @issue
   end
 
   def update
@@ -46,6 +47,20 @@ class IssuesController < ApplicationController
     authorize @issue
     @issue.destroy
     redirect_to issues_path
+  end
+
+  def upvote
+    @issue = Issue.friendly.find(params[:id])
+    authorize @issue
+    @issue.liked_by current_user
+    redirect_to request.referrer
+  end
+
+  def remove_upvote
+    @issue = Issue.friendly.find(params[:id])
+    authorize @issue
+    @issue.unliked_by current_user
+    redirect_to request.referrer
   end
 
   private

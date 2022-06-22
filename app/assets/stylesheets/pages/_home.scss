@@ -12,7 +12,7 @@
   margin-right: 60px;
   h1 {
     font-size: 54px;
-    font-weight: 900;
+    font-weight: 900 !important;
     @include media-breakpoint-down(sm) {
       font-size: 52px;
     }
@@ -25,6 +25,7 @@
   }
   @include media-breakpoint-down(lg) {
     width: 100%;
+    margin-right: 0;
     p {
       max-width: 680px;
     }

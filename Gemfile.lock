@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 9e54d590f9ba5009e345aacd6d04555831ac3c99
+  branch: master
+  specs:
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
+
+GIT
   remote: https://github.com/heartcombo/simple_form.git
   revision: 23205201a935c7e52c39549756e2ec2e2ec47793
   specs:
@@ -76,6 +84,7 @@ GEM
       tzinfo (~> 2.0)
     acts-as-taggable-on (9.0.1)
       activerecord (>= 6.0, < 7.1)
+    acts_as_votable (0.13.2)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (10.4.7.0)
@@ -142,6 +151,18 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -293,6 +314,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on (~> 9.0)
+  acts_as_votable
   autoprefixer-rails
   bootsnap
   capybara
@@ -300,11 +322,13 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  faker!
   font-awesome-sass (~> 6.1)
   friendly_id (~> 5.4.0)
   image_processing (~> 1.2)
   jbuilder
   jsbundling-rails
+  kaminari
   pg (~> 1.1)
   pg_search (~> 2.3.0)
   puma (~> 5.0)

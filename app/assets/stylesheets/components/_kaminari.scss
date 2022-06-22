@@ -1,0 +1,35 @@
+.pagination {
+  a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 200;
+  }
+}
+
+.page, .prev, .first, .next, .last {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page:hover {
+  background-color: #DCB9FF;
+  border-radius: 2px;
+}
+
+.prev, .first, .next, .last {
+  transition: all 0.2s ease;
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.current {
+  background-color: #DCB9FF !important;
+  color: #590CA3 !important;
+  border-radius: 2px !important;
+  font-weight: 200 !important;
+}
+

@@ -1,12 +1,90 @@
 .tag {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   padding: 4px 14px;
-  background-color: #DCB9FF;
+  background-color: #F3E6FF;
   border: 1px solid #590CA3;
   border-radius: 20px;
   color: #590CA3;
   font-weight: 200;
   margin-right: 6px;
+  margin-bottom: 10px;
+}
+
+.tag-small {
+  padding: 2px 8px;
+  font-size: 12px;
+  margin-right: 1px;
+  margin-bottom: 3px;
+  img {
+    height: 10px;
+    margin-left: 4px;
+  }
+}
+
+.accordion {
+  margin-bottom: 16px;
+  @include media-breakpoint-down(sm) {
+    margin-bottom: 0;
+  }
+}
+
+.accordion-body {
+  padding: 0;
+}
+
+.accordion-button {
+  background-color: #FFFFFF !important;
+  box-shadow: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  color: #000000 !important;
+}
+
+.accordion-item {
+  border: none;
+  background: transparent;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230E0000'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+}
+
+.ruby, .rails {
+  border-color: #CC0100;
+  color: #CC0100;
+  background-color: #FFD6D6;
+}
+
+.javascript {
+  border-color: #F7DF1C;
+  color: #F7DF1C;
+  background-color: #9D8F00;
+}
+
+.html {
+  border-color: #E44D27;
+  background-color: #FFD8CE;
+  color: #E44D27;
+}
+
+.css {
+  border-color: #264dE3;
+  color: #264dE3;
+  background-color: #B9C7FA;
+}
+
+.github {
+  border-color: #000000;
+  color: #000000;
+  background-color: #DADADA;
+}
+
+.heroku {
+  border-color: #590CA3;
+  color: #590CA3;
+  background-color: #DBB5FF;
 }
 
 // SELECT 2

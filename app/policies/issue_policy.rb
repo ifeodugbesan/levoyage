@@ -26,7 +26,15 @@ class IssuePolicy < ApplicationPolicy
     edit?
   end
 
-  def destroy
+  def destroy?
     edit?
+  end
+
+  def upvote?
+    new?
+  end
+
+  def remove_upvote?
+    new?
   end
 end
