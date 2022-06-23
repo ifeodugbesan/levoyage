@@ -4,7 +4,7 @@ class IssuesController < ApplicationController
   def index
     @issues = policy_scope(Issue)
     @issues = @issues.search_by_fields(params[:search][:query]) if params[:search][:query].present? && params[:search][:query] != ""
-    @issues = @issues.tagged_with(params[:search][:tags], :any => true) if params[:search][:tags].present? && params[:search][:tags] != [""]
+    @issues = @issues.tagged_with(params[:search][:tags]) if params[:search][:tags].present? && params[:search][:tags] != [""]
     @issues = @issues.page params[:page]
   end
 

@@ -1,13 +1,31 @@
 <div class="wrapper">
-  <div class="issues-container">
-    <h1 class="mb-5"><%= @issue.title %></h1>
-    <h6>Error Message:</h6>
-    <h4 class="mb-5"><%= @issue.error_message %></h4>
-    <h6>Content:</h6>
-    <p class="mb-5"><%= @issue.content %></p>
-    <h6 class="mb-4">Tags:</h6>
-    <% @issue.tags.each do |tag| %>
-      <span class="tag"><%= tag.name %></span>
+  <div class="issues-wrapper">
+    <%= link_to 'https://www.instagram.com/chezlini/', target: '_blank' do %>
+      <div class="top-ad" style="background-image: url(<%= asset_path 'chezlini-ad.png' %>)"></div>
     <% end %>
+    <div class="d-flex">
+      <div class="issues-container">
+        <div class="title-with-votes">
+          <h3 class="mb-5"><%= @issue.title %></h3>
+          <%= render 'votes', issue: @issue %>
+        </div>
+        <hr>
+        <h6>Error Message:</h6>
+        <h5 class="mb-5"><%= @issue.error_message %></h5>
+        <h6>Content:</h6>
+        <p class="mb-5"><%= @issue.content %></p>
+        <hr>
+        <h6 class="mb-4">Tags:</h6>
+        <% @issue.tags.each do |tag| %>
+          <span class="tag <%= render 'tag_class', tag: tag %>"><%= tag.name %><%= render 'tag_icons', tag: tag %></span>
+        <% end %>
+        <hr>
+      </div>
+      <div class="side-ad-container">
+        <%= link_to 'https://www.myfootprint.ai/business', target: '_blank' do  %>
+          <div class="side-ad" style="background-image: url(<%= asset_path 'myfootprint.png' %>)"></div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
