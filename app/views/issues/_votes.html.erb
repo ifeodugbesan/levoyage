@@ -1,17 +1,23 @@
 <div class="upvote">
-  <% if current_user.voted_for? issue %>
-      <i class="bi bi-caret-up-fill disabled"></i>
-  <% else %>
-    <%= link_to upvote_issue_path(issue), data: { "turbo-method": :post } do %>
-      <i class="bi bi-caret-up-fill"></i>
+  <% if user_signed_in? %>
+    <% if current_user.voted_for? issue %>
+        <i class="bi bi-caret-up-fill disabled"></i>
+    <% else %>
+      <%= link_to upvote_issue_path(issue), data: { "turbo-method": :post } do %>
+        <i class="bi bi-caret-up-fill"></i>
+      <% end %>
     <% end %>
-  <% end %>
-  <p class="mb-0 text-center"><%= issue.votes_for.size %></p>
-  <% if current_user.voted_for? issue %>
-    <%= link_to remove_upvote_issue_path(issue), data: { "turbo-method": :post } do %>
-      <i class="bi bi-caret-down-fill"></i>
+    <p class="mb-0 text-center"><%= issue.votes_for.size %></p>
+    <% if current_user.voted_for? issue %>
+      <%= link_to remove_upvote_issue_path(issue), data: { "turbo-method": :post } do %>
+        <i class="bi bi-caret-down-fill"></i>
+      <% end %>
+    <% else %>
+      <i class="bi bi-caret-down-fill disabled"></i>
     <% end %>
   <% else %>
+    <i class="bi bi-caret-up-fill disabled"></i>
+    <p class="mb-0 text-center"><%= issue.votes_for.size %></p>
     <i class="bi bi-caret-down-fill disabled"></i>
   <% end %>
 </div>

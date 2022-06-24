@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_22_164148) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_24_132741) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_22_164148) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "alternatives", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "issue_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["issue_id"], name: "index_alternatives_on_issue_id"
+    t.index ["user_id"], name: "index_alternatives_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -145,6 +154,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_22_164148) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "alternatives", "issues"
+  add_foreign_key "alternatives", "users"
   add_foreign_key "issues", "users"
   add_foreign_key "resources", "users"
   add_foreign_key "taggings", "tags"

@@ -70,13 +70,14 @@ trix-toolbar .trix-button-group {
 
 trix-editor pre {
   background: #EEEEEE !important;
-
+  white-space: pre-wrap;
 }
 
 .trix-content pre {
   background: #23241f;
   padding: 1em;
   color: #f8f8f2;
+  white-space: pre-wrap;
 }
 
 .trix-button {

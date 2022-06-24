@@ -1,5 +1,6 @@
 class Issue < ApplicationRecord
   belongs_to :user
+  has_many :alternatives
   has_rich_text :content
   acts_as_taggable_on :tags
   acts_as_votable

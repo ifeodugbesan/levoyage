@@ -10,6 +10,7 @@ class IssuesController < ApplicationController
 
   def show
     @issue = Issue.friendly.find(params[:id])
+    @alternative = Alternative.new
     authorize @issue
   end
 

@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" data-controller="issues">
   <div class="issues-wrapper">
     <%= link_to 'https://www.instagram.com/chezlini/', target: '_blank' do %>
       <div class="top-ad" style="background-image: url(<%= asset_path 'chezlini-ad.png' %>)"></div>
@@ -6,20 +6,42 @@
     <div class="d-flex">
       <div class="issues-container">
         <div class="title-with-votes">
-          <h3 class="mb-5"><%= @issue.title %></h3>
+          <h3 class="mb-0"><%= @issue.title %></h3>
+          <p class="date-posted mb-3"><%= time_ago_in_words(@issue.created_at) %> ago</p>
           <%= render 'votes', issue: @issue %>
+          <% @issue.tags.each do |tag| %>
+            <span class="tag tag-small <%= render 'tag_class', tag: tag %>"><%= tag.name %><%= render 'tag_icons', tag: tag %></span>
+          <% end %>
         </div>
         <hr>
         <h6>Error Message:</h6>
         <h5 class="mb-5"><%= @issue.error_message %></h5>
         <h6>Content:</h6>
-        <p class="mb-5"><%= @issue.content %></p>
-        <hr>
-        <h6 class="mb-4">Tags:</h6>
-        <% @issue.tags.each do |tag| %>
-          <span class="tag <%= render 'tag_class', tag: tag %>"><%= tag.name %><%= render 'tag_icons', tag: tag %></span>
+        <%= @issue.content %>
+        <hr class="seperator">
+        <!-- Alternative solutions -->
+        <h5 class="mb-3">The alumni community has posted <%= @issue.alternatives.count %> alternative solutions</h5>
+        <% if policy(Alternative).create? %>
+            <span class="text-link alternative-form-link" data-action="click->issues#showForm">HAVE AN ALTERNATIVE SOLUTION? <i class="bi bi-plus-lg ms-2"></i></span>
+            <div class="pt-3 d-none" data-issues-target="form">
+              <%= simple_form_for [@issue, @alternative] do |f| %>
+                <%= f.rich_text_area :content, placeholder: 'Add issue content here (use style buttons above to customise your article)', class: "normal-mode" %>
+                <%= f.submit "LET'S ADD IT!", class: 'primary-button' %>
+              <% end %>
+            </div>
         <% end %>
         <hr>
+
+        <div class="position-relative">
+          <% @issue.alternatives.each_with_index do |alternative, index| %>
+            <% unless index == 0 %>
+              <hr>
+            <% end %>
+            <p class="posted mb-0">Posted by <%= alternative.user.email %></p>
+            <p class="posted date-posted mb-3"><%= time_ago_in_words(alternative.created_at) %> ago</p>
+            <%= alternative.content %>
+          <% end %>
+        </div>
       </div>
       <div class="side-ad-container">
         <%= link_to 'https://www.myfootprint.ai/business', target: '_blank' do  %>
