@@ -14,34 +14,40 @@
           <% end %>
         </div>
         <hr>
-        <h6>Error Message:</h6>
-        <h5 class="mb-5"><%= @issue.error_message %></h5>
+        <% if @issue.error_message %>
+          <h6>Error Message:</h6>
+          <h5 class="mb-3 f-200"><%= @issue.error_message %></h5>
+        <% end %>
         <h6>Content:</h6>
         <%= @issue.content %>
-        <hr class="seperator">
         <!-- Alternative solutions -->
-        <h5 class="mb-3">The alumni community has posted <%= @issue.alternatives.count %> alternative solutions</h5>
-        <% if policy(Alternative).create? %>
-            <span class="text-link alternative-form-link" data-action="click->issues#showForm">HAVE AN ALTERNATIVE SOLUTION? <i class="bi bi-plus-lg ms-2"></i></span>
-            <div class="pt-3 d-none" data-issues-target="form">
-              <%= simple_form_for [@issue, @alternative] do |f| %>
-                <%= f.rich_text_area :content, placeholder: 'Add issue content here (use style buttons above to customise your article)', class: "normal-mode" %>
-                <%= f.submit "LET'S ADD IT!", class: 'primary-button' %>
-              <% end %>
-            </div>
+        <% if @issue.alternatives.any? %>
+          <hr class="seperator">
+          <h5 class="mb-3">The alumni community has posted <%= @issue.alternatives.count %> alternative solutions</h5>
         <% end %>
-        <hr>
-
-        <div class="position-relative">
-          <% @issue.alternatives.each_with_index do |alternative, index| %>
-            <% unless index == 0 %>
-              <hr>
+        <% if policy(Alternative).create? %>
+            <hr>
+          <span class="text-link alternative-form-link" data-action="click->issues#showForm">HAVE AN ALTERNATIVE SOLUTION? <i class="bi bi-plus-lg ms-2"></i></span>
+          <div class="pt-3 d-none" data-issues-target="form">
+            <%= simple_form_for [@issue, @alternative] do |f| %>
+              <%= f.rich_text_area :content, placeholder: 'Add issue content here (use style buttons above to customise your article)', class: "normal-mode" %>
+              <%= f.submit "LET'S ADD IT!", class: 'primary-button' %>
             <% end %>
-            <p class="posted mb-0">Posted by <%= alternative.user.email %></p>
-            <p class="posted date-posted mb-3"><%= time_ago_in_words(alternative.created_at) %> ago</p>
-            <%= alternative.content %>
-          <% end %>
-        </div>
+          </div>
+          <hr>
+        <% end %>
+        <% if @issue.alternatives.any? %>
+          <div class="position-relative">
+            <% @issue.alternatives.each_with_index do |alternative, index| %>
+              <% unless index == 0 %>
+                <hr>
+              <% end %>
+              <p class="posted mb-0">Posted by <%= alternative.user.email %></p>
+              <p class="posted date-posted mb-3"><%= time_ago_in_words(alternative.created_at) %> ago</p>
+              <%= alternative.content %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
       <div class="side-ad-container">
         <%= link_to 'https://www.myfootprint.ai/business', target: '_blank' do  %>

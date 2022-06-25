@@ -7,6 +7,6 @@
     remote:        data-remote
 -%>
 <span class="first">
-  <%= link_to_unless current_page.first?, '<i class="bi bi-chevron-double-left"></i>'.html_safe, url, remote: remote %>
+  <%= link_to_unless current_page.first?, '<i class="bi bi-chevron-double-left"></i>'.html_safe, url, { remote: remote, class: "first" } %>
 </span>
 
