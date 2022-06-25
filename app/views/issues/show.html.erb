@@ -8,7 +8,7 @@
         <div class="title-with-votes">
           <h3 class="mb-0"><%= @issue.title %></h3>
           <p class="date-posted mb-3"><%= time_ago_in_words(@issue.created_at) %> ago</p>
-          <%= render 'votes', issue: @issue %>
+          <%= render 'votes', subject: @issue %>
           <% @issue.tags.each do |tag| %>
             <span class="tag tag-small <%= render 'tag_class', tag: tag %>"><%= tag.name %><%= render 'tag_icons', tag: tag %></span>
           <% end %>
@@ -42,9 +42,12 @@
               <% unless index == 0 %>
                 <hr>
               <% end %>
-              <p class="posted mb-0">Posted by <%= alternative.user.email %></p>
-              <p class="posted date-posted mb-3"><%= time_ago_in_words(alternative.created_at) %> ago</p>
-              <%= alternative.content %>
+              <div class="alternative-card">
+                <p class="posted mb-0">Posted by <%= alternative.user.email %></p>
+                <p class="posted date-posted mb-3"><%= time_ago_in_words(alternative.created_at) %> ago</p>
+                <%= alternative.content %>
+                <%= render 'votes', subject: alternative %>
+              </div>
             <% end %>
           </div>
         <% end %>

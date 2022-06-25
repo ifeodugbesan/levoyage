@@ -21,4 +21,12 @@ class AlternativePolicy < ApplicationPolicy
   def destroy?
     edit?
   end
+
+  def upvote?
+    create?
+  end
+
+  def remove_upvote?
+    create?
+  end
 end

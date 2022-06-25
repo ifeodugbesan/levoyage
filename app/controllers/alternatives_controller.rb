@@ -33,16 +33,16 @@ class AlternativesController < ApplicationController
   end
 
   def upvote
-    @issue = Issue.friendly.find(params[:id])
-    authorize @issue
-    @issue.liked_by current_user
+    @alternative = Alternative.find(params[:id])
+    authorize @alternative
+    @alternative.liked_by current_user
     redirect_to request.referrer
   end
 
   def remove_upvote
-    @issue = Issue.friendly.find(params[:id])
-    authorize @issue
-    @issue.unliked_by current_user
+    @alternative = Alternative.find(params[:id])
+    authorize @alternative
+    @alternative.unliked_by current_user
     redirect_to request.referrer
   end
 

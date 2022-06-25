@@ -18,6 +18,9 @@
 
 .issue-card-container {
   position: relative;
+  .upvote {
+    bottom: 0;
+  }
 }
 
 .issues-card {
@@ -50,7 +53,6 @@
   position: absolute;
   right: 20px;
   top: 0;
-  bottom: 0;
   i {
     color: grey;
     &:hover {
