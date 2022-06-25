@@ -16,8 +16,10 @@
       <i class="bi bi-caret-down-fill disabled"></i>
     <% end %>
   <% else %>
-    <i class="bi bi-caret-up-fill disabled"></i>
-    <p class="mb-0 text-center"><%= subject.votes_for.size %></p>
-    <i class="bi bi-caret-down-fill disabled"></i>
+    <div data-bs-toggle="tooltip" data-bs-placement="top" title="Sign Up/In to upvote">
+      <i class="bi bi-caret-up-fill disabled"></i>
+      <p class="mb-0 text-center"><%= subject.votes_for.size %></p>
+      <i class="bi bi-caret-down-fill disabled"></i>
+    </div>
   <% end %>
 </div>

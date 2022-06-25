@@ -37,8 +37,8 @@
           <hr>
         <% end %>
         <% if @issue.alternatives.any? %>
-          <div class="position-relative">
-            <% @issue.alternatives.each_with_index do |alternative, index| %>
+          <div class="alternatives-container">
+            <% @issue.alternatives.order(created_at: :desc).each_with_index do |alternative, index| %>
               <% unless index == 0 %>
                 <hr>
               <% end %>

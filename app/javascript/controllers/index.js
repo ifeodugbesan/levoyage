@@ -7,6 +7,9 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import SharedController from "./shared_controller"
+application.register("shared", SharedController)
+
 import Select2Controller from "./select2_controller"
 application.register("select2", Select2Controller)
 
