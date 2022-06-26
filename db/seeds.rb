@@ -9,13 +9,18 @@
 require 'faker'
 
 ActsAsTaggableOn::Tag.destroy_all
+Alternative.destroy_all
 Issue.destroy_all
 User.destroy_all
 
 
 user = User.create!(email: 'ife@gmail.com', password: 123456)
 sarah = User.create!(email: 'sarah@gmail.com', password: 123456)
-puts 'created user'
+50.times do
+  User.create!(email: Faker::Internet.email, password: 123456)
+end
+
+puts 'created users'
 
 tags = []
 
@@ -42,7 +47,6 @@ tags << tag8
   puts "created the tag #{tag.name}"
 end
 
-
 50.times do
   issue = Issue.new(
                 title: Faker::DcComics.title,
@@ -50,11 +54,19 @@ end
                 content: Faker::Quote.famous_last_words,
                 user: user
               )
+
+  # CREATING TAGS FOR ISSUES
   tags.sample((0..12).to_a.sample).each do |tag|
     issue.tag_list.add(tag)
   end
 
   issue.save!
+
+  # CREATING VOTES
+  (0..100).to_a.sample.times do
+    issue.liked_by User.all.sample
+  end
+
   puts "created the issue #{issue.title}"
 end
 
