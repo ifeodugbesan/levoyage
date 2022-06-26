@@ -1,0 +1,19 @@
+.log-container {
+  height: calc(100vh - 78px);
+  padding-bottom: 78px;
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.log-content {
+  min-width: 480px;
+  @include media-breakpoint-down(sm) {
+    min-width: 100%;
+  }
+}
+
+.dev-link {
+  font-size: 14px;
+}
