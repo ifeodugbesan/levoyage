@@ -2,6 +2,7 @@ class IssuesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
+    @tags = ActsAsTaggableOn::Tagging.where(taggable_type: "Issue").map { |tagging| tagging.tag }.uniq
     @issues = policy_scope(Issue)
     @issues = @issues.search_by_fields(params[:search][:query]) if params[:search][:query].present? && params[:search][:query] != ""
     @issues = @issues.tagged_with(params[:search][:tags]) if params[:search][:tags].present? && params[:search][:tags] != [""]
@@ -39,6 +40,8 @@ class IssuesController < ApplicationController
   def update
     @issue = Issue.friendly.find(params[:id])
     authorize @issue
+    ActsAsTaggableOn::Tagging.where(taggable_type: "Issue", taggable_id: @issue.id).destroy_all
+    params[:issue][:tags].reject(&:blank?).each { |tag| @issue.tag_list.add(tag.downcase) }
     @issue.update(issue_params)
     redirect_to issue_path(@issue)
   end
@@ -47,7 +50,7 @@ class IssuesController < ApplicationController
     @issue = Issue.friendly.find(params[:id])
     authorize @issue
     @issue.destroy
-    redirect_to issues_path
+    redirect_to issues_path, status: :see_other
   end
 
   def upvote

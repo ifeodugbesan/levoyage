@@ -3,8 +3,8 @@
     <%= link_to 'https://www.instagram.com/kobrasfc/', target: '_blank' do %>
       <div class="top-ad" style="background-image: url(<%= asset_path 'kobra-ad.png' %>)"></div>
     <% end %>
-    <%= simple_form_for :search, url: issues_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-      <%= f.input :query, label: false, placeholder: "What issue are you having?", input_html: { class: 'form-input', value: params[:search][:query] } %>
+    <%= simple_form_for :search, url: resources_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+      <%= f.input :query, label: false, placeholder: "What resource are you looking for?", input_html: { class: 'form-input', value: params[:search][:query] } %>
       <div class="accordion" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
@@ -32,39 +32,45 @@
       <div class="issues-container">
         <div class="results">
           <span>
-            <%= page_entries_info @issues %>
+            <%= page_entries_info @resources %>
           </span>
-          <% if policy(Issue).create? %>
-            <%= link_to new_issue_path, class: "text-link" do %>
-              <span class="new-issue">ADD ISSUE <i class="bi bi-plus-lg"></i></span>
+          <% if policy(Resource).create? %>
+            <%= link_to new_resource_path, class: "text-link" do %>
+              <span class="new-issue">ADD RESOURCE <i class="bi bi-plus-lg"></i></span>
             <% end %>
           <% end %>
         </div>
-        <% @issues.each do |issue| %>
-          <%= link_to issue_path(issue), style: 'text-decoration: none; color: inherit;' do %>
-            <div class="issue-card-container">
-              <div id="issueCard<%= issue.id %>" class="issues-card">
-                <div class="d-flex justify-content-between w-100">
-                  <div class="flex-grow-1">
-                    <h4 class="mb-4"><%= issue.title %></h4>
-                    <h6 class="mb-0">Error Message:</h6>
-                    <p class="mb-0"><%= issue.error_message %></p>
-                    <% if issue.tags.any? %>
-                      <div class="pt-3">
-                        <% issue.tags.each do |tag| %>
-                          <span class="tag tag-small <%= render 'shared/tag_class', tag: tag %>"><%= tag.name %><%= render 'shared/tag_icons', tag: tag %></span>
-                        <% end %>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
+        <div class="resource-cards">
+          <% @resources.each do |resource| %>
+            <div class="resource-card">
+              <div class="resource-image-container mb-3">
+                <%= link_to resource.link, target: '_blank' do %>
+                  <%= cl_image_tag resource.photo.key, class: 'resource-image w-100' %>
+                <% end %>
+                <%= render 'shared/votes', subject: resource %>
               </div>
-              <%= render 'shared/votes', subject: issue %>
+              <h6 class="mb-2"><%= resource.title %></h6>
+              <p class="mb-2"><%= resource.description %></p>
+              <div class="">
+                <% resource.tags.each do |tag| %>
+                  <span class="tag tag-small <%= render 'shared/tag_class', tag: tag %>"><%= tag.name %><%= render 'shared/tag_icons', tag: tag %></span>
+                <% end %>
+              </div>
+              <% if policy(resource).edit? %>
+                <div class="crud-links">
+                  <%= link_to edit_resource_path(resource) do %>
+                    <i class="fas fa-edit"></i>
+                  <% end %>
+                  <%= link_to resource_path(resource), data: { "turbo-method": :delete, confirm: 'Are you sure you want to delete this resource?' } do %>
+                    <i class="fas fa-trash-alt"></i>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
           <% end %>
-        <% end %>
+        </div>
         <div class="my-5 d-flex justify-content-center">
-          <%= paginate @issues %>
+          <%= paginate @resources %>
         </div>
       </div>
       <div class="side-ad-container">

@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div class="container mb-5">
+    <h1 class="boldest text-center mt-5 mb-4 <%= @dark_mode ? 'grey' : 'black' %>">Amend your resource</h1>
+    <%= simple_form_for @resource do |f| %>
+      <%= f.input :title, input_html: { class: 'form-input', placeholder: 'The title of your resource is?' } %>
+      <%= f.input :description, input_html: { class: 'form-input', placeholder: 'What is it for?' } %>
+      <%= f.input :link, input_html: { class: 'form-input', placeholder: 'What the url of the resource?' } %>
+      <%= f.input :photo, label: false, input_html: { class: 'd-none' }, label_html: { class: 'upload-photo'}, label: "UPLOAD PHOTO" %>
+      <%= f.input :tags, label: 'Tags', collection: ActsAsTaggableOn::Tag.all, value_method: :name, input_html: { multiple: true, data: { controller: 'select2', select2_options_value: { tags: true }}} %>
+
+      <%= f.submit "LET'S FIX IT!", class: 'primary-button' %>
+    <% end %>
+  </div>
+</div>

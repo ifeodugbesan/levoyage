@@ -9,7 +9,12 @@ Rails.application.routes.draw do
     end
     resources :alternatives, only: :create
   end
-  resources :resources
+  resources :resources do
+    member do
+      post 'upvote'
+      post 'remove_upvote'
+    end
+  end
   resources :alternatives, only: :create do
     member do
       post 'upvote'
