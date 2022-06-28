@@ -1,7 +1,7 @@
 <div class="wrapper" data-controller="issues">
   <div class="issues-wrapper">
-    <%= link_to 'https://www.instagram.com/kobrasfc/', target: '_blank' do %>
-      <div class="top-ad" style="background-image: url(<%= asset_path 'kobra-ad.png' %>)"></div>
+    <%= link_to 'https://kitt.lewagon.com/knowledge/tutorials', target: '_blank' do %>
+      <div class="top-ad" style="background-image: url(<%= asset_path 'le-wagon-ad.png' %>)"></div>
     <% end %>
     <%= simple_form_for :search, url: issues_path, method: "GET", html: { class: 'form-inline' } do |f| %>
       <%= f.input :query, label: false, placeholder: "What issue are you having?", input_html: { class: 'form-input', value: params[:search][:query] } %>
