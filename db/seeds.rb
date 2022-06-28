@@ -96,6 +96,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423925/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -115,6 +119,10 @@ resource.tag_list.add("css")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/Le%20voyage/color-hunt.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
@@ -136,6 +144,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -155,6 +167,10 @@ resource.tag_list.add("css")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/Le%20voyage/adobe-color.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
@@ -178,6 +194,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -198,6 +218,10 @@ resource.tag_list.add("css")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/Le%20voyage/color-zilla.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
@@ -220,6 +244,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -239,6 +267,10 @@ resource.tag_list.add("style")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423928/Le%20voyage/font-pair.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
@@ -262,6 +294,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -281,6 +317,10 @@ resource.tag_list.add("style")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423928/Le%20voyage/iconfinder.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
@@ -302,6 +342,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423928/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -321,6 +365,10 @@ resource.tag_list.add("style")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423928/Le%20voyage/nucleo.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
@@ -344,6 +392,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656424746/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -365,6 +417,10 @@ resource.tag_list.add("style")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423925/Le%20voyage/pexels.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
@@ -388,6 +444,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -409,6 +469,10 @@ resource.tag_list.add("style")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423925/Le%20voyage/stocksnap.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
@@ -432,6 +496,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -453,6 +521,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656424925/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -473,6 +545,10 @@ resource.tag_list.add("style")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656424926/Le%20voyage/glaze.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
@@ -496,6 +572,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -516,6 +596,10 @@ resource.tag_list.add("style")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/Le%20voyage/awwwards.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
@@ -539,6 +623,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -560,6 +648,10 @@ resource.tag_list.add("style")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/Le%20voyage/collect-ui.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
@@ -584,6 +676,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -606,6 +702,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423925/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -624,6 +724,10 @@ resource.tag_list.add("gem")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423925/Le%20voyage/rails.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
@@ -645,6 +749,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423925/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -664,6 +772,10 @@ resource.tag_list.add("yarn")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/Le%20voyage/slick.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
@@ -685,6 +797,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -702,6 +818,10 @@ resource.tag_list.add("rails")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/Le%20voyage/stimulus.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
@@ -723,6 +843,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -743,6 +867,10 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
+
 puts "created the resource #{resource.title}"
 
 
@@ -761,6 +889,10 @@ resource.tag_list.add("yarn")
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/Le%20voyage/chart-js.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
+
+(0..100).to_a.sample.times do
+  resource.liked_by User.all.sample
+end
 
 puts "created the resource #{resource.title}"
 
