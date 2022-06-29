@@ -16,14 +16,14 @@ Resource.destroy_all
 User.destroy_all
 
 # CREATING USERS
-user = User.create!(email: 'ife@gmail.com', password: 123456, name: "Ife Odugbesan", nickname: "ifeodugbesan", image_url: "https://avatars.githubusercontent.com/u/42211692?v=4")
-sarah = User.create!(email: 'sarah@gmail.com', password: 123456, name: "Sarah O'Grady", nickname: "sarah-ogrady", image_url: "https://avatars.githubusercontent.com/u/59362705?v=4")
-all_users = []
-all_users << user
-all_users << sarah
-50.times do
-  all_users << User.create!(email: Faker::Internet.email, password: 123456, name: Faker::Name.name, nickname: Faker::Superhero.name.gsub(/\s/, ""), image_url: "https://picsum.photos/200")
-end
+ife = User.create!(email: 'ife@gmail.com', password: 123456, name: "Ife Odugbesan", nickname: "ifeodugbesan", image_url: "https://avatars.githubusercontent.com/u/42211692?v=4", admin: true)
+# sarah = User.create!(email: 'sarah@gmail.com', password: 123456, name: "Sarah O'Grady", nickname: "sarah-ogrady", image_url: "https://avatars.githubusercontent.com/u/59362705?v=4")
+# all_users = []
+# all_users << user
+# all_users << sarah
+# 50.times do
+#   all_users << User.create!(email: Faker::Internet.email, password: 123456, name: Faker::Name.name, nickname: Faker::Superhero.name.gsub(/\s/, ""), image_url: "https://picsum.photos/200")
+# end
 
 puts 'created users'
 
@@ -47,36 +47,37 @@ tags << tag7
 tag8 = ActsAsTaggableOn::Tag.create(name: 'heroku')
 tags << tag8
 
-30.times do
-  tag = ActsAsTaggableOn::Tag.create(name: Faker::DcComics.hero.downcase)
-  tags << tag
-  puts "created the tag #{tag.name}"
-end
+# 30.times do
+#   tag = ActsAsTaggableOn::Tag.create(name: Faker::DcComics.hero.downcase)
+#   tags << tag
+#   puts "created the tag #{tag.name}"
+# end
 
 # CREATING ISSUES
-50.times do
-  issue = Issue.new(
-                title: Faker::DcComics.title,
-                error_message: Faker::Movie.quote,
-                content: Faker::Quote.famous_last_words,
-                user: all_users.sample
-              )
 
-  # CREATING TAGS FOR ISSUES
-  tags.sample((0..12).to_a.sample).each do |tag|
-    issue.tag_list.add(tag)
-  end
+# 50.times do
+#   issue = Issue.new(
+#                 title: Faker::DcComics.title,
+#                 error_message: Faker::Movie.quote,
+#                 content: Faker::Quote.famous_last_words,
+#                 user: all_users.sample
+#               )
 
-  issue.save!
+#   # CREATING TAGS FOR ISSUES
+#   tags.sample((0..12).to_a.sample).each do |tag|
+#     issue.tag_list.add(tag)
+#   end
 
-  # CREATING VOTES
-  (0..100).to_a.sample.times do
-    issue.liked_by all_users.sample
-  end
+#   issue.save!
 
-  puts "created the issue #{issue.title}"
+#   # CREATING VOTES
+#   (0..100).to_a.sample.times do
+#     issue.liked_by all_users.sample
+#   end
 
-end
+#   puts "created the issue #{issue.title}"
+
+# end
 
 
 # CREATING RESOURCES
@@ -85,7 +86,7 @@ resource = Resource.new(
                     title: "Coolors",
                     description: "The super fast color schemes generator! Create, save and share perfect palettes in seconds!",
                     link: "https://coolors.co/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("colors")
@@ -99,9 +100,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423925/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -110,7 +111,7 @@ resource = Resource.new(
                     title: "Color Hunt",
                     description: "Color Hunt is a free and open platform for color inspiration with thousands of trendy hand-picked color palettes.",
                     link: "https://colorhunt.co/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("colors")
@@ -123,9 +124,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -134,7 +135,7 @@ resource = Resource.new(
                     title: "UiGradients",
                     description: "A handpicked collection of beautiful color gradients for designers and developers.",
                     link: "https://uigradients.com/",
-                    user: all_users.sample
+                    user: ife
                   )
 
 resource.tag_list.add("colors")
@@ -147,9 +148,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -158,7 +159,7 @@ resource = Resource.new(
                     title: "Adobe Color Wheel",
                     description: "Create color palettes with the color wheel or image, browse thousands of color combinations from the Adobe Color community.",
                     link: "https://color.adobe.com",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("colors")
@@ -171,9 +172,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -182,7 +183,7 @@ resource = Resource.new(
                     title: "ColorSlurp",
                     description: "ColorSlurp. Pick, edit, and copy colors with the best color picker for Mac!",
                     link: "https://colorslurp.com",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("colors")
@@ -197,9 +198,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -208,7 +209,7 @@ resource = Resource.new(
                     title: "ColorZilla",
                     description: "Advanced Eyedropper, Color Picker, Gradient Generator and more.",
                     link: "https://www.colorzilla.com",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("colors")
@@ -222,9 +223,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -233,7 +234,7 @@ resource = Resource.new(
                     title: "Google Fonts",
                     description: "Making the web more beautiful, fast, and open through great typography.",
                     link: "https://fonts.google.com",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("fonts")
@@ -247,9 +248,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -258,7 +259,7 @@ resource = Resource.new(
                     title: "FontPair",
                     description: "Font Pair helps designers pair Google Fonts together. Beautiful Google Font combinations and pairs.",
                     link: "https://www.fontpair.co",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("fonts")
@@ -271,9 +272,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423928/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -282,7 +283,7 @@ resource = Resource.new(
                     title: "FontAwesome",
                     description: "The world's most popular and easiest to use icon set just got an upgrade. More icons. More styles. More Options.",
                     link: "https://fontawesome.com/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("fonts")
@@ -297,9 +298,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -308,7 +309,7 @@ resource = Resource.new(
                     title: "IconFinder",
                     description: "Iconfinder is the leading search engine and market place for vector icons in SVG, PNG, CSH and AI format.",
                     link: "https://www.iconfinder.com",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("icons")
@@ -321,9 +322,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423928/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -332,7 +333,7 @@ resource = Resource.new(
                     title: "Flat Icon",
                     description: "2699000+ Free vector icons in SVG, PSD, PNG, EPS format or as ICON FONT. Thousands of free icons in the largest database of free vector icons!",
                     link: "https://www.flaticon.com",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("icons")
@@ -345,9 +346,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423928/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -356,7 +357,7 @@ resource = Resource.new(
                     title: "Nucleo App",
                     description: "Nucleo is a beautiful library of 29280 icons, and a powerful application to collect, customize and export all your icons.",
                     link: "https://nucleoapp.com",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("icons")
@@ -369,9 +370,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423928/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -380,7 +381,7 @@ resource = Resource.new(
                     title: "Unsplash",
                     description: "Beautiful, free images and photos that you can download and use for any project. Better than any royalty free or stock photos.",
                     link: "https://unsplash.com",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("images")
@@ -395,9 +396,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656424746/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -406,7 +407,7 @@ resource = Resource.new(
                     title: "Pexels",
                     description: "Free stock photos you can use everywhere. ✓ Free for commercial use ✓ No attribution required.",
                     link: "https://www.pexels.com",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("images")
@@ -421,9 +422,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423925/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -432,7 +433,7 @@ resource = Resource.new(
                     title: "Pixabay",
                     description: "Find your perfect free image or video to download and use for anything. ✓ Free for commercial use ✓ No attribution required ✓ High quality images.",
                     link: "https://pixabay.com",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("images")
@@ -447,9 +448,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -458,7 +459,7 @@ resource = Resource.new(
                     title: "StockSnap",
                     description: "The #1 source for beautiful free photos. High quality and high resolution stock images free from all copyright restrictions (CC0) - no attribution required.",
                     link: "https://stocksnap.io",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("images")
@@ -473,9 +474,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423925/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -484,7 +485,7 @@ resource = Resource.new(
                     title: "Gratisography",
                     description: "The world's quirkiest collection of free high-resolution pictures, comprised of the world's best, most creative images - photos you just won't find anywhere else.",
                     link: "https://gratisography.com",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("images")
@@ -499,9 +500,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -510,7 +511,7 @@ resource = Resource.new(
                     title: "unDraw",
                     description: "The design project with open-source illustrations for any idea you can imagine and create.",
                     link: "https://undraw.co",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("graphics")
@@ -524,9 +525,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656424925/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -535,7 +536,7 @@ resource = Resource.new(
                     title: "Glaze",
                     description: "Free illustrations, for everything. Memorable products, brands, & presentations start with our curated royalty-free illustration library.",
                     link: "https://www.glazestock.com/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("graphics")
@@ -549,9 +550,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656424926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -560,7 +561,7 @@ resource = Resource.new(
                     title: "Dribbble",
                     description: "Dribbble is where designers gain inspiration, feedback, community, and jobs and is your best resource to discover and connect with designers worldwide.",
                     link: "https://dribbble.com/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("graphics")
@@ -575,9 +576,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -586,7 +587,7 @@ resource = Resource.new(
                     title: "Awwwards.",
                     description: "Awwwards are the Website Awards that recognize and promote the talent and effort of the best developers, designers and web agencies in the world.",
                     link: "https://www.awwwards.com/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("inspiration")
@@ -600,9 +601,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -611,7 +612,7 @@ resource = Resource.new(
                     title: "Calltoidea",
                     description: "Calltoidea is the unique place where you can find inspiration. A great tool created by a designer for web professionals.",
                     link: "https://www.calltoidea.com/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("graphics")
@@ -626,9 +627,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -637,7 +638,7 @@ resource = Resource.new(
                     title: "Collect UI",
                     description: "Daily inspiration collected from daily ui archive and beyond. Based on Dribbble shots, hand picked, updating daily.",
                     link: "https://collectui.com/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("graphics")
@@ -652,9 +653,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -663,7 +664,7 @@ resource = Resource.new(
                     title: "Lapa Ninja",
                     description: "The best landing page design inspiration from around the web. Lapa Ninja is created to help designers find inspiration, learn and improve design skills.",
                     link: "https://www.lapa.ninja",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("graphics")
@@ -679,9 +680,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -690,7 +691,7 @@ resource = Resource.new(
                     title: "Behance",
                     description: "Find curated interaction design work from cutting edge UI/UX design to detailed iconography.",
                     link: "https://www.behance.net/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("graphics")
@@ -705,9 +706,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423925/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -716,7 +717,7 @@ resource = Resource.new(
                     title: "Ruby on Rails Guides",
                     description: "This guide will get you started with models, persistence to database, and the Active Record pattern and library. Active Record Migrations.",
                     link: "https://guides.rubyonrails.org/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("rails")
@@ -728,9 +729,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423925/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -739,7 +740,7 @@ resource = Resource.new(
                     title: "Simple Form",
                     description: "Rails forms made easy. Simple Form aims to be as flexible as possible while helping you with powerful components to create your forms.",
                     link: "https://github.com/heartcombo/simple_form",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("rails")
@@ -752,9 +753,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423925/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -763,7 +764,7 @@ resource = Resource.new(
                     title: "slick carousel",
                     description: "slick is a responsive carousel jQuery plugin that supports multiple breakpoints, CSS3 transitions, touch events/swiping & much more!",
                     link: "https://kenwheeler.github.io/slick/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("javascript")
@@ -776,9 +777,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -787,7 +788,7 @@ resource = Resource.new(
                     title: "Flatpickr",
                     description: "flatpickr is a lightweight and powerful datetime picker. Lean, UX-driven, and extensible, yet it doesn't depend on any libraries.",
                     link: "https://flatpickr.js.org/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("javascript")
@@ -800,9 +801,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -811,7 +812,7 @@ resource = Resource.new(
                     title: "Stimulus",
                     description: "A modest JavaScript framework for the HTML you already have.",
                     link: "https://stimulus.hotwired.dev/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("javascript")
@@ -822,9 +823,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423926/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -833,7 +834,7 @@ resource = Resource.new(
                     title: "jQuery Star & Bar Rating",
                     description: "jQuery Bar Rating Plugin works by transforming a standard select field into a rating widget.",
                     link: "https://antennaio.github.io/jquery-bar-rating/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("javascript")
@@ -846,9 +847,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -857,7 +858,7 @@ resource = Resource.new(
                     title: "noUiSlider",
                     description: "noUiSlider is a lightweight range slider with multi-touch support and a ton of features.",
                     link: "https://refreshless.com/nouislider/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("javascript")
@@ -870,9 +871,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
@@ -881,7 +882,7 @@ resource = Resource.new(
                     title: "Chart.js",
                     description: "Simple, clean and engaging HTML5 based JavaScript charts. Chart.js is an easy way to include animated, interactive graphs on your website for free.",
                     link: "https://www.chartjs.org/",
-                    user: user
+                    user: ife
                   )
 
 resource.tag_list.add("javascript")
@@ -893,9 +894,9 @@ file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/L
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
-(0..100).to_a.sample.times do
-  resource.liked_by all_users.sample
-end
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
 
 puts "created the resource #{resource.title}"
 
