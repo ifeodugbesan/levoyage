@@ -16,6 +16,7 @@
   margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
+  font-size: 14px;
   @include media-breakpoint-down(sm) {
     flex-direction: column-reverse;
   }

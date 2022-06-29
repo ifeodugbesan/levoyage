@@ -1,0 +1,170 @@
+.light {
+  background: -webkit-linear-gradient(125deg, #E9E900, #ED5F05);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark {
+  background: -webkit-linear-gradient(125deg, #000000, #FFFFFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark-mode {
+  background: #0A0A0A;
+
+  // NAVBAR
+
+  .navbar-lewagon {
+    background: #0A0A0A;
+    .nav-link {
+      color: #989898;
+      &:hover {
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  // SIDE NAV
+
+  .offcanvas {
+    background: #0A0A0A;
+  }
+
+  // DEVISE PAGES
+
+  .log-content {
+    color: #616161;
+  }
+
+  // FORMS
+
+  .form-input {
+    background: #1E1E1E;
+    color: #CCCCCC;
+  }
+
+  trix-editor {
+    background: #1E1E1E;
+    color: #CCCCCC;
+  }
+
+  trix-editor pre {
+    background: #3B3B3B !important;
+  }
+
+  .select2-container--default .select2-selection--multiple {
+    background-color: #1E1E1E;
+  }
+
+  .select2-dropdown {
+    background-color: #181818;
+    border-color: #181818;
+    color: #EBEBEB;
+  }
+
+  label {
+    color: #CCCCCC;
+  }
+
+  .upload-photo {
+    color: inherit;
+  }
+
+  // BANNER
+
+  .banner {
+    h1 {
+      color: #616161;
+    }
+    p {
+      color: #EBEBEB;
+    }
+  }
+
+  // ACCORDION AND TAGS
+
+  .accordion-button {
+    background-color: #0A0A0A !important;
+    color: #989898 !important;
+  }
+
+  .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23989898'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+  }
+
+  .accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23989898'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e")
+  }
+
+  .tag-selector + label {
+    background: #0A0A0A;
+    color: #888888;
+  }
+
+  .tag-selector:checked + label {
+    background-color: #580DA3;
+    color: #FFFFFF;
+  }
+
+  .tag {
+    background-color: #191919;
+    color: #767676;
+  }
+
+  // PAGINATION
+
+  .results {
+    color: #EBEBEB;
+  }
+
+  .pagination a {
+    color: #EBEBEB;
+    &:hover {
+      color: #590CA3;
+    }
+  }
+
+  // ISSUES CARD
+
+  .issues-card {
+    background: #101010;
+    // h4, h6 {
+    //   color: #616161;
+    // }
+    // p {
+    //   color: #EBEBEB;
+    // }
+  }
+
+  .issues-container {
+    h1, h2, h3, h4, h6 {
+      color: #616161;
+    }
+    h5, p {
+      color: #EBEBEB;
+    }
+  }
+
+  .trix-content {
+    color: #EBEBEB;
+  }
+
+  .seperator {
+    background: #823EBE !important;
+  }
+
+  // UPVOTE
+
+  .upvote {
+    i {
+      color: #FFFFFF;
+      &:hover {
+        color: #590CA4;
+      }
+    }
+    p {
+      color: #EBEBEB;
+    }
+  }
+}
