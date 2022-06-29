@@ -116,7 +116,7 @@
   }
 
   .tag {
-    background-color: #191919;
+    background-color: #080808;
     color: #767676;
   }
 
@@ -126,10 +126,20 @@
     color: #EBEBEB;
   }
 
-  .pagination a {
-    color: #EBEBEB;
-    &:hover {
-      color: #590CA3;
+  .pagination {
+    a {
+      color: #EBEBEB;
+      &:hover {
+        color: #590CA3;
+      }
+    }
+    .current {
+      background-color: #580DA3 !important;
+      color: #FFFFFF !important;
+    }
+    .page:hover {
+      background-color: #1C1C1C;
+      color: #FFFFFF;
     }
   }
 
