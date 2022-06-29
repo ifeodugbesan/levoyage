@@ -46,6 +46,10 @@ tag7 = ActsAsTaggableOn::Tag.create(name: 'github')
 tags << tag7
 tag8 = ActsAsTaggableOn::Tag.create(name: 'heroku')
 tags << tag8
+tag9 = ActsAsTaggableOn::Tag.create(name: 'design')
+tags << tag9
+tag10 = ActsAsTaggableOn::Tag.create(name: 'gem')
+tags << tag10
 
 # 30.times do
 #   tag = ActsAsTaggableOn::Tag.create(name: Faker::DcComics.hero.downcase)
