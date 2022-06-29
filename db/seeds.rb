@@ -16,10 +16,13 @@ Resource.destroy_all
 User.destroy_all
 
 # CREATING USERS
-user = User.create!(email: 'ife@gmail.com', password: 123456)
-sarah = User.create!(email: 'sarah@gmail.com', password: 123456)
+user = User.create!(email: 'ife@gmail.com', password: 123456, name: "Ife Odugbesan", nickname: "ifeodugbesan", image_url: "https://avatars.githubusercontent.com/u/42211692?v=4")
+sarah = User.create!(email: 'sarah@gmail.com', password: 123456, name: "Sarah O'Grady", nickname: "sarah-ogrady", image_url: "https://avatars.githubusercontent.com/u/59362705?v=4")
+all_users = []
+all_users << user
+all_users << sarah
 50.times do
-  User.create!(email: Faker::Internet.email, password: 123456)
+  all_users << User.create!(email: Faker::Internet.email, password: 123456, name: Faker::Name.name, nickname: Faker::Superhero.name.gsub(/\s/, ""), image_url: "https://picsum.photos/200")
 end
 
 puts 'created users'
@@ -56,7 +59,7 @@ end
                 title: Faker::DcComics.title,
                 error_message: Faker::Movie.quote,
                 content: Faker::Quote.famous_last_words,
-                user: user
+                user: all_users.sample
               )
 
   # CREATING TAGS FOR ISSUES
@@ -68,7 +71,7 @@ end
 
   # CREATING VOTES
   (0..100).to_a.sample.times do
-    issue.liked_by User.all.sample
+    issue.liked_by all_users.sample
   end
 
   puts "created the issue #{issue.title}"
@@ -97,7 +100,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -121,7 +124,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -131,7 +134,7 @@ resource = Resource.new(
                     title: "UiGradients",
                     description: "A handpicked collection of beautiful color gradients for designers and developers.",
                     link: "https://uigradients.com/",
-                    user: user
+                    user: all_users.sample
                   )
 
 resource.tag_list.add("colors")
@@ -145,7 +148,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -169,7 +172,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -195,7 +198,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -220,7 +223,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -245,7 +248,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -269,7 +272,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -295,7 +298,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -319,7 +322,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -343,7 +346,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -367,7 +370,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -393,7 +396,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -419,7 +422,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -445,7 +448,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -471,7 +474,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -497,7 +500,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -522,7 +525,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -547,7 +550,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -573,7 +576,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -598,7 +601,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -624,7 +627,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -650,7 +653,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -677,7 +680,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -703,7 +706,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -726,7 +729,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -750,7 +753,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -774,7 +777,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -798,7 +801,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -820,7 +823,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -844,7 +847,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -868,7 +871,7 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
@@ -891,16 +894,10 @@ resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type:
 resource.save!
 
 (0..100).to_a.sample.times do
-  resource.liked_by User.all.sample
+  resource.liked_by all_users.sample
 end
 
 puts "created the resource #{resource.title}"
-
-
-
-
-
-
 
 
 

@@ -185,6 +185,8 @@ GEM
     minitest (5.15.0)
     msgpack (1.5.2)
     multi_xml (0.6.0)
+    net-http (0.2.2)
+      uri
     net-imap (0.2.3)
       digest
       net-protocol
@@ -321,6 +323,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
+    uri (0.11.0)
     version_gem (1.1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -362,6 +365,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   kaminari
+  net-http
   omniauth-github
   omniauth-rails_csrf_protection
   pg (~> 1.1)

@@ -7,7 +7,13 @@
       <div class="issues-container">
         <div class="title-with-votes">
           <h3 class="mb-0"><%= @issue.title %></h3>
-          <p class="date-posted mb-3"><%= time_ago_in_words(@issue.created_at) %> ago</p>
+          <div class="subject-user my-3">
+            <%= image_tag @issue.user.image_url, class: "avatar me-2" %>
+            <div class="">
+              <p class="posted mb-0">Posted by <%= link_to @issue.user.name, "https://github.com/#{@issue.user.nickname}", class: "text-link", target: "_blank" %></p>
+              <p class="posted date-posted mb-0"><%= time_ago_in_words(@issue.created_at) %> ago</p>
+            </div>
+          </div>
           <%= render 'shared/votes', subject: @issue %>
           <% @issue.tags.each do |tag| %>
             <span class="tag tag-small <%= render 'shared/tag_class', tag: tag %>"><%= tag.name %><%= render 'shared/tag_icons', tag: tag %></span>
@@ -23,7 +29,7 @@
         <!-- Alternative solutions -->
         <% if @issue.alternatives.any? %>
           <hr class="seperator">
-          <h6 class="mb-3">The alumni community has posted <%= @issue.alternatives.count %> alternative solutions</h6>
+          <h6 class="mb-3">The alumni community has posted <%= pluralize(@issue.alternatives.count, "alternative solution") %></h6>
         <% end %>
         <% if policy(Alternative).create? %>
             <hr>
@@ -43,8 +49,13 @@
                 <hr>
               <% end %>
               <div class="alternative-card">
-                <p class="posted mb-0">Posted by <%= alternative.user.email %></p>
-                <p class="posted date-posted mb-3"><%= time_ago_in_words(alternative.created_at) %> ago</p>
+                <div class="subject-user mb-3">
+                  <%= image_tag alternative.user.image_url, class: "avatar me-2" %>
+                  <div class="">
+                    <p class="posted mb-0">Posted by <%= link_to alternative.user.name, "https://github.com/#{alternative.user.nickname}", class: "text-link", target: "_blank" %></p>
+                    <p class="posted date-posted mb-0"><%= time_ago_in_words(alternative.created_at) %> ago</p>
+                  </div>
+                </div>
                 <%= alternative.content %>
                 <%= render 'shared/votes', subject: alternative %>
               </div>
