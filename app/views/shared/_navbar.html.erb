@@ -27,13 +27,13 @@
             <li class="nav-item active">
               <% if @dark_mode %>
                 <div class="d-flex align-items-center h-100">
-                  <%= link_to toggle_dark_mode_path(dark_mode: false), class: "nav-link" do %>
+                  <%= link_to toggle_dark_mode_path(dark_mode: false), class: "nav-link light" do %>
                     <i class="bi bi-brightness-high-fill light"></i>
                   <% end %>
                 </div>
               <% else %>
                 <div class="d-flex align-items-center h-100">
-                  <%= link_to toggle_dark_mode_path(dark_mode: true), class: "nav-link" do %>
+                  <%= link_to toggle_dark_mode_path(dark_mode: true), class: "nav-link dark" do %>
                     <i class="bi bi-moon-stars-fill dark"></i>
                   <% end %>
                 </div>

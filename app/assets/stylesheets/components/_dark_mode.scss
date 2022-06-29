@@ -13,6 +13,14 @@
 .dark-mode {
   background: #0A0A0A;
 
+  h1 {
+    color: #616161;
+  }
+
+  p {
+    color: #EBEBEB;
+  }
+
   // NAVBAR
 
   .navbar-lewagon {
@@ -68,7 +76,7 @@
   }
 
   .upload-photo {
-    color: inherit;
+    background-color: #181818;
   }
 
   // BANNER
