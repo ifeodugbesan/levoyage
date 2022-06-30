@@ -50,7 +50,12 @@
                 <%= render 'shared/votes', subject: resource %>
               </div>
               <h6 class="mb-2"><%= resource.title %></h6>
-              <p class="mb-2"><%= resource.description %></p>
+              <p class="mb-1"><%= resource.description %></p>
+              <hr class="mt-0 mb-1">
+              <div class="mb-2">
+                <p class="posted mb-0">Posted by <%= link_to resource.user.name, "https://github.com/#{resource.user.nickname}", class: "text-link", target: "_blank" %></p>
+                <p class="posted date-posted mb-0"><%= time_ago_in_words(resource.created_at) %> ago</p>
+              </div>
               <div class="">
                 <% resource.tags.each do |tag| %>
                   <span class="tag tag-small <%= render 'shared/tag_class', tag: tag %>"><%= tag.name %><%= render 'shared/tag_icons', tag: tag %></span>
