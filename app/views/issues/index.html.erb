@@ -28,7 +28,7 @@
         </div>
       </div>
     <% end %>
-    <div class="d-flex">
+    <div class="issue-holder">
       <div class="issues-container">
         <div class="results">
           <span>
@@ -63,7 +63,9 @@
                   </div>
                 </div>
               </div>
-              <%= render 'shared/votes', subject: issue %>
+              <div class="upvote">
+                <%= render 'shared/votes', subject: issue %>
+              </div>
             </div>
           <% end %>
         <% end %>

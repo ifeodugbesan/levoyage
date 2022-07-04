@@ -28,7 +28,7 @@
         </div>
       </div>
     <% end %>
-    <div class="d-flex">
+    <div class="issue-holder">
       <div class="issues-container">
         <div class="results">
           <span>
@@ -47,7 +47,9 @@
                 <%= link_to resource.link, target: '_blank' do %>
                   <%= cl_image_tag resource.photo.key, class: 'resource-image w-100' %>
                 <% end %>
-                <%= render 'shared/votes', subject: resource %>
+                <div class="upvote">
+                  <%= render 'shared/votes', subject: resource %>
+                </div>
               </div>
               <h6 class="mb-2"><%= resource.title %></h6>
               <p class="mb-1"><%= resource.description %></p>
@@ -79,8 +81,8 @@
         </div>
       </div>
       <div class="side-ad-container">
-        <%= link_to 'https://www.myfootprint.ai/business', target: '_blank' do  %>
-          <div class="side-ad" style="background-image: url(<%= asset_path 'myfootprint.png' %>)"></div>
+        <%= link_to 'https://uikit.lewagon.com/', target: '_blank' do  %>
+          <div class="side-ad" style="background-image: url(<%= asset_path 'ui-kit-ad.png' %>)"></div>
         <% end %>
       </div>
     </div>

@@ -17,6 +17,7 @@ module Levoyage
     config.load_defaults 7.0
 
     # Configuration for the application, engines, and railties goes here.
+    config.action_view.embed_authenticity_token_in_remote_forms = true
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.

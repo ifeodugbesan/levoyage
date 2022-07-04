@@ -3,7 +3,7 @@
     <%= link_to 'https://www.instagram.com/chezlini/', target: '_blank' do %>
       <div class="top-ad" style="background-image: url(<%= asset_path 'chezlini-ad.png' %>)"></div>
     <% end %>
-    <div class="d-flex">
+    <div class="issue-holder">
       <div class="issues-container">
         <div class="title-with-votes">
           <h3 class="mb-0"><%= @issue.title %></h3>
@@ -14,7 +14,9 @@
               <p class="posted date-posted mb-0"><%= time_ago_in_words(@issue.created_at) %> ago</p>
             </div>
           </div>
-          <%= render 'shared/votes', subject: @issue %>
+          <div class="upvote">
+            <%= render 'shared/votes', subject: @issue %>
+          </div>
           <% @issue.tags.each do |tag| %>
             <span class="tag tag-small <%= render 'shared/tag_class', tag: tag %>"><%= tag.name %><%= render 'shared/tag_icons', tag: tag %></span>
           <% end %>
@@ -57,15 +59,17 @@
                   </div>
                 </div>
                 <%= alternative.content %>
-                <%= render 'shared/votes', subject: alternative %>
+                <div class="upvote">
+                  <%= render 'shared/votes', subject: alternative %>
+                </div>
               </div>
             <% end %>
           </div>
         <% end %>
       </div>
       <div class="side-ad-container">
-        <%= link_to 'https://www.myfootprint.ai/business', target: '_blank' do  %>
-          <div class="side-ad" style="background-image: url(<%= asset_path 'myfootprint.png' %>)"></div>
+        <%= link_to 'https://www.lewagon.com/blog', target: '_blank' do  %>
+          <div class="side-ad" style="background-image: url(<%= asset_path 'blog-ad.png' %>)"></div>
         <% end %>
       </div>
     </div>
