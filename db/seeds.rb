@@ -298,7 +298,7 @@ resource.tag_list.add("style")
 resource.tag_list.add("gem")
 
 
-file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/Le%20voyage/font-awesome.png")
+file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656977616/Le%20voyage/font-awesome.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
@@ -895,6 +895,222 @@ resource.tag_list.add("charts")
 resource.tag_list.add("yarn")
 
 file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656423927/Le%20voyage/chart-js.png")
+resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
+resource.save!
+
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
+
+puts "created the resource #{resource.title}"
+
+
+
+
+
+
+
+
+
+
+
+
+# NEW RESOURCES
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+resource = Resource.new(
+                    title: "Bootstrap Icons",
+                    description: "Free, high quality, open source icon library with over 1,600 icons. Include them anyway you like—SVGs, SVG sprite, or web fonts.",
+                    link: "https://icons.getbootstrap.com/",
+                    user: ife
+                  )
+
+resource.tag_list.add("front-end")
+resource.tag_list.add("icons")
+resource.tag_list.add("bootstrap")
+resource.tag_list.add("design")
+resource.tag_list.add("style")
+
+file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656977617/Le%20voyage/bootstrap-icons.png")
+resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
+resource.save!
+
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
+
+puts "created the resource #{resource.title}"
+
+
+resource = Resource.new(
+                    title: "Freepik",
+                    description: "All the assets you need, in one place. Find and download the best high-quality photos, designs and mockups",
+                    link: "https://www.freepik.com/",
+                    user: ife
+                  )
+
+resource.tag_list.add("front-end")
+resource.tag_list.add("backgrounds")
+resource.tag_list.add("images")
+resource.tag_list.add("design")
+resource.tag_list.add("style")
+
+file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656977617/Le%20voyage/freepik.png")
+resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
+resource.save!
+
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
+
+puts "created the resource #{resource.title}"
+
+
+resource = Resource.new(
+                    title: "Hotwire",
+                    description: "Hotwire is an alternative approach to building modern web applications without using much JavaScript by sending HTML instead of JSON over the wire.",
+                    link: "https://hotwired.dev/",
+                    user: ife
+                  )
+
+resource.tag_list.add("javascript")
+resource.tag_list.add("html")
+resource.tag_list.add("yarn")
+resource.tag_list.add("gem")
+resource.tag_list.add("turbo")
+resource.tag_list.add("stimulus")
+
+file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656977617/Le%20voyage/hotwire.png")
+resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
+resource.save!
+
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
+
+puts "created the resource #{resource.title}"
+
+
+resource = Resource.new(
+                    title: "Simple Calendar",
+                    description: "Simple Calendar is designed to do one thing really really well: render a calendar. It lets you render a calendar of any size. Maybe you want a day view, a 4 day agenda, a week view, a month view, or a 6 week calendar.",
+                    link: "http://excid3.github.io/simple_calendar",
+                    user: ife
+                  )
+
+resource.tag_list.add("calendar")
+resource.tag_list.add("gem")
+resource.tag_list.add("rails")
+
+file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656977617/Le%20voyage/simple-calendar.png")
+resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
+resource.save!
+
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
+
+puts "created the resource #{resource.title}"
+
+
+resource = Resource.new(
+                    title: "Loading.io",
+                    description: "Open source CSS loading animations dedicated for speed, simplicity & dev-friendly. < 1KB per icon before minimized.",
+                    link: "https://loading.io/css/",
+                    user: ife
+                  )
+
+resource.tag_list.add("css")
+resource.tag_list.add("front-end")
+resource.tag_list.add("design")
+resource.tag_list.add("style")
+
+file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656977616/Le%20voyage/loading.png")
+resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
+resource.save!
+
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
+
+puts "created the resource #{resource.title}"
+
+
+resource = Resource.new(
+                    title: "Star-rating.js",
+                    description: "A zero-dependency ES6 module that transforms a SELECT with numerical-range values (i.e. 1-5) into a dynamic star rating element.",
+                    link: "https://pryley.github.io/star-rating.js/",
+                    user: ife
+                  )
+
+resource.tag_list.add("javascript")
+resource.tag_list.add("front-end")
+resource.tag_list.add("rating")
+resource.tag_list.add("yarn")
+resource.tag_list.add("style")
+resource.tag_list.add("css")
+resource.tag_list.add("design")
+
+file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656977616/Le%20voyage/star-rating.png")
+resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
+resource.save!
+
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
+
+puts "created the resource #{resource.title}"
+
+
+resource = Resource.new(
+                    title: "Chartkick",
+                    description: "Create beautiful JavaScript charts with one line of Ruby",
+                    link: "https://chartkick.com/",
+                    user: ife
+                  )
+
+resource.tag_list.add("javascript")
+resource.tag_list.add("front-end")
+resource.tag_list.add("design")
+resource.tag_list.add("yarn")
+resource.tag_list.add("charts")
+
+file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656977616/Le%20voyage/chartkick.png")
+resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
+resource.save!
+
+# (0..100).to_a.sample.times do
+#   resource.liked_by all_users.sample
+# end
+
+puts "created the resource #{resource.title}"
+
+
+resource = Resource.new(
+                    title: "Tom Select",
+                    description: "Tom Select is a dynamic, framework agnostic, and lightweight (~16kb gzipped) <select> UI control.",
+                    link: "https://tom-select.js.org/",
+                    user: ife
+                  )
+
+resource.tag_list.add("javascript")
+resource.tag_list.add("front-end")
+resource.tag_list.add("forms")
+resource.tag_list.add("yarn")
+
+file = URI.open("https://res.cloudinary.com/dxb6saco2/image/upload/v1656977616/Le%20voyage/tom-select.png")
 resource.photo.attach(io: file, filename: "#{resource.title}.png", content_type: 'image/png')
 resource.save!
 
