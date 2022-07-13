@@ -1,0 +1,5 @@
+<%= simple_form_for [@issue, @alternative] do |f| %>
+  <%= f.rich_text_area :content, placeholder: 'Add issue content here (use style buttons above to customise your article)', class: "normal-mode" %>
+  <%= f.submit "LET'S ADD IT!", class: 'primary-button' %>
+  <%= link_to 'CANCEL', issue_path(@issue), class: "cancel-link text-link" %>
+<% end %>

@@ -1,0 +1,8 @@
+<%= simple_form_for [@issue, @alternative] do |f| %>
+  <%= f.rich_text_area :content, placeholder: 'Add issue content here (use style buttons above to customise your article)', class: "normal-mode" %>
+  <%= f.submit "LET'S ADD IT!", class: 'primary-button' %>
+<% end %>
+
+<script>
+  document.querySelector('trix-editor').insertAdjacentHTML('beforebegin', `<p class="small-text grey mb-1">Hint: Click the paperclip 📎 to attach images. Use (< >) for a code block</p>`)
+</script>

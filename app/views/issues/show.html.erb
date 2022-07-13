@@ -5,29 +5,33 @@
     <% end %>
     <div class="issue-holder">
       <div class="issues-container">
-        <div class="title-with-votes">
-          <h3 class="mb-0"><%= @issue.title %></h3>
-          <div class="subject-user my-3">
-            <%= image_tag @issue.user.image_url, class: "avatar me-2" %>
-            <div class="">
-              <p class="posted mb-0">Posted by <%= link_to @issue.user.name, "https://github.com/#{@issue.user.nickname}", class: "text-link", target: "_blank" %></p>
-              <p class="posted date-posted mb-0"><%= time_ago_in_words(@issue.created_at) %> ago</p>
+        <turbo-frame id="issue">
+          <div class="title-with-votes">
+            <h3 class="mb-0"><%= @issue.title %></h3>
+            <div class="subject-user my-3">
+              <%= image_tag @issue.user.image_url, class: "avatar me-2" %>
+              <div class="">
+                <p class="posted mb-0">
+                  Posted by <%= link_to @issue.user.name, "https://github.com/#{@issue.user.nickname}", class: "text-link", target: "_blank" %>
+                  <%= link_to '<i class="bi bi-pen"></i>'.html_safe, edit_issue_path(@issue), class: "edit-link" if policy(@issue).edit? %></p>
+                <p class="posted date-posted mb-0"><%= time_ago_in_words(@issue.created_at) %> ago</p>
+              </div>
             </div>
+            <div class="upvote">
+              <%= render 'shared/votes', subject: @issue %>
+            </div>
+            <% @issue.tags.each do |tag| %>
+              <span class="tag tag-small <%= render 'shared/tag_class', tag: tag %>"><%= tag.name %><%= render 'shared/tag_icons', tag: tag %></span>
+            <% end %>
           </div>
-          <div class="upvote">
-            <%= render 'shared/votes', subject: @issue %>
-          </div>
-          <% @issue.tags.each do |tag| %>
-            <span class="tag tag-small <%= render 'shared/tag_class', tag: tag %>"><%= tag.name %><%= render 'shared/tag_icons', tag: tag %></span>
+          <hr>
+          <% if @issue.error_message %>
+            <h6>Error Message:</h6>
+            <h5 class="mb-3 f-200"><%= @issue.error_message %></h5>
           <% end %>
-        </div>
-        <hr>
-        <% if @issue.error_message %>
-          <h6>Error Message:</h6>
-          <h5 class="mb-3 f-200"><%= @issue.error_message %></h5>
-        <% end %>
-        <h6>Content:</h6>
-        <%= @issue.content %>
+          <h6>Content:</h6>
+          <%= @issue.content %>
+        </turbo-frame>
         <!-- Alternative solutions -->
         <% if @issue.alternatives.any? %>
           <hr class="seperator">
@@ -50,19 +54,7 @@
               <% unless index == 0 %>
                 <hr>
               <% end %>
-              <div class="alternative-card">
-                <div class="subject-user mb-3">
-                  <%= image_tag alternative.user.image_url, class: "avatar me-2" %>
-                  <div class="">
-                    <p class="posted mb-0">Posted by <%= link_to alternative.user.name, "https://github.com/#{alternative.user.nickname}", class: "text-link", target: "_blank" %></p>
-                    <p class="posted date-posted mb-0"><%= time_ago_in_words(alternative.created_at) %> ago</p>
-                  </div>
-                </div>
-                <%= alternative.content %>
-                <div class="upvote">
-                  <%= render 'shared/votes', subject: alternative %>
-                </div>
-              </div>
+              <%= render 'alternatives/alternative', alternative: alternative, issue: @issue %>
             <% end %>
           </div>
         <% end %>

@@ -1,6 +1,12 @@
 class AlternativesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
+  def new
+    @issue = Issue.friendly.find(params[:issue_id])
+    @alternative = Alternative.new
+    authorize @alternative
+  end
+
   def create
     @alternative = Alternative.create(alternative_params)
     @alternative.user = current_user
