@@ -21,13 +21,14 @@ class AlternativesController < ApplicationController
 
   def edit
     @alternative = Alternative.find(params[:id])
+    @issue = Issue.friendly.find(params[:issue_id])
     authorize @alternative
   end
 
   def update
     @alternative = Alternative.find(params[:id])
     authorize @alternative
-    @alternative.update(issue_params)
+    @alternative.update(alternative_params)
     redirect_to issue_path(@alternative.issue)
   end
 

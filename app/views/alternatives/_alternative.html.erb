@@ -2,7 +2,7 @@
   <div class="subject-user mb-3">
     <%= image_tag alternative.user.image_url, class: "avatar me-2" %>
     <div class="">
-      <p class="posted mb-0">Posted by <%= link_to alternative.user.name, "https://github.com/#{alternative.user.nickname}", class: "text-link", target: "_blank" %><%= link_to '<i class="bi bi-pen"></i>'.html_safe, edit_issue_path(issue), class: "edit-link" if policy(alternative).edit? %></p></p>
+      <p class="posted mb-0">Posted by <%= link_to alternative.user.name, "https://github.com/#{alternative.user.nickname}", class: "text-link", target: "_blank" %><%= link_to '<i class="bi bi-pen"></i>'.html_safe, edit_issue_alternative_path(@issue, alternative), class: "edit-link" if policy(alternative).edit? %></p></p>
       <p class="posted date-posted mb-0"><%= time_ago_in_words(alternative.created_at) %> ago</p>
     </div>
   </div>
