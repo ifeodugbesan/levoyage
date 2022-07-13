@@ -6,8 +6,12 @@ class AlternativePolicy < ApplicationPolicy
     # end
   end
 
-  def create?
+  def new?
     user
+  end
+
+  def create?
+    new?
   end
 
   def edit?

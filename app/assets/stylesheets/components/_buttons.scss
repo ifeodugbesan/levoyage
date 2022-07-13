@@ -21,4 +21,8 @@
   background: -webkit-linear-gradient(0deg, #590CA3, #A30C15);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  line-height: 16px;
+  &:hover {
+    border-bottom: 1px solid #850d4f;
+  }
 }

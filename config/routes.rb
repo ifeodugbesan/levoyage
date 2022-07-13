@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       post 'upvote'
       post 'remove_upvote'
     end
-    resources :alternatives, only: :create
+    resources :alternatives, only: %w[new create edit update]
   end
   resources :resources do
     member do
