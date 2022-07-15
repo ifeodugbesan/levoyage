@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="container mb-5">
-    <h1 class="boldest text-center mt-5 mb-4 <%= @dark_mode ? 'grey' : 'black' %>">Solved an issue?</h1>
+    <h3 class="boldest text-center mt-5 mb-4 <%= @dark_mode ? 'grey' : 'black' %>">Solved an issue?</h3>
     <%= simple_form_for @issue do |f| %>
       <%= f.input :title, input_html: { class: 'form-input', placeholder: 'The title of your issue is?' } %>
       <%= f.input :error_message, input_html: { class: 'form-input', placeholder: 'What was your error message... (optional)' } %>

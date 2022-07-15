@@ -25,11 +25,6 @@
             <% end %>
           </div>
           <hr>
-          <% if @issue.error_message %>
-            <h6>Error Message:</h6>
-            <h5 class="mb-3 f-200"><%= @issue.error_message %></h5>
-          <% end %>
-          <h6>Content:</h6>
           <%= @issue.content %>
         </turbo-frame>
         <!-- Alternative solutions -->

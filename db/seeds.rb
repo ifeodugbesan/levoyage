@@ -11,15 +11,16 @@ User.destroy_all
 ife = User.create!(email: 'ife@gmail.com', password: 123456, name: "Ife Odugbesan", nickname: "ifeodugbesan", image_url: "https://avatars.githubusercontent.com/u/42211692?v=4", admin: true)
 # sarah = User.create!(email: 'sarah@gmail.com', password: 123456, name: "Sarah O'Grady", nickname: "sarah-ogrady", image_url: "https://avatars.githubusercontent.com/u/59362705?v=4")
 # all_users = []
-# all_users << user
+# all_users << ife
 # all_users << sarah
 # 50.times do
 #   all_users << User.create!(email: Faker::Internet.email, password: 123456, name: Faker::Name.name, nickname: Faker::Superhero.name.gsub(/\s/, ""), image_url: "https://picsum.photos/200")
 # end
 
-puts 'created users'
+puts 'created user'
 
 # CREATING TAGS
+
 tags = []
 
 tag1 = ActsAsTaggableOn::Tag.create(name: 'ruby')
@@ -49,12 +50,11 @@ tags << tag10
 #   puts "created the tag #{tag.name}"
 # end
 
-# CREATING ISSUES
+# # CREATING ISSUES
 
 # 50.times do
 #   issue = Issue.new(
 #                 title: Faker::DcComics.title,
-#                 error_message: Faker::Movie.quote,
 #                 content: Faker::Quote.famous_last_words,
 #                 user: all_users.sample
 #               )
