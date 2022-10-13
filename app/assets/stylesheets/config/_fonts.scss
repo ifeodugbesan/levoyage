@@ -1,9 +1,9 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
-
+// @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700;900&display=swap');
 // Define fonts for body and headers
-$body-font: "Lato", "sans-serif";
-$headers-font: "Lato", "sans-serif";
+$body-font: 'Figtree', sans-serif;
+$headers-font: 'Figtree', sans-serif;
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -14,10 +14,6 @@ $headers-font: "Lato", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 400 !important;
-}
 
 .f-200 {
   font-weight: 200 !important;

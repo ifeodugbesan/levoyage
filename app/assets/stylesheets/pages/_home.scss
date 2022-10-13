@@ -9,7 +9,7 @@
 }
 
 .banner-content {
-  margin-right: 60px;
+  margin-right: 160px;
   h1 {
     font-size: 54px;
     font-weight: 900 !important;
@@ -41,8 +41,8 @@
 }
 
 .banner-image {
-  width: 500px;
-  border-radius: 6px;
+  width: 380px;
+  border-radius: 10px;
   @include media-breakpoint-down(lg) {
     display: none;
   }
