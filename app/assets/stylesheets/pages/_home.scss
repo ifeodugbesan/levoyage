@@ -21,7 +21,7 @@
     max-width: 380px;
     font-size: 18px;
     margin: 32px 0;
-    font-weight: 200;
+    font-weight: 300;
   }
   @include media-breakpoint-down(lg) {
     width: 100%;
@@ -95,7 +95,7 @@
   height: 500px;
   p {
     color: #F0E0FF;
-    font-weight: 200;
+    font-weight: 300;
     font-size: 18px;
     width: 400px;
   }

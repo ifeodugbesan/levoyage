@@ -2,7 +2,7 @@
   border: 2px solid #5A0CA3;
   padding: 14px 20px;
   cursor: pointer;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 14px;
   background-color: #EDE4F5;
   border-radius: 10px;
@@ -25,7 +25,7 @@
   flex-direction: column;
   margin-bottom: 20px;
   p {
-    font-weight: 200;
+    font-weight: 300;
   }
   @include media-breakpoint-down(sm) {
     width: 100%;
