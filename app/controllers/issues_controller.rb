@@ -3,7 +3,7 @@ class IssuesController < ApplicationController
 
   def index
     @tags = ActsAsTaggableOn::Tagging.where(taggable_type: "Issue").map { |tagging| tagging.tag }.uniq
-    @issues = policy_scope(Issue)
+    @issues = policy_scope(Issue).order(created_at: :desc)
     @issues = @issues.search_by_fields(params[:search][:query]) if params[:search][:query].present? && params[:search][:query] != ""
     @issues = @issues.tagged_with(params[:search][:tags]) if params[:search][:tags].present? && params[:search][:tags] != [""]
     @issues = @issues.page params[:page]
