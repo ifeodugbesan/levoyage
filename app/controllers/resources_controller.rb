@@ -5,8 +5,8 @@ class ResourcesController < ApplicationController
   def index
     @tags = ActsAsTaggableOn::Tagging.where(taggable_type: "Resource").map { |tagging| tagging.tag }.uniq
     @resources = policy_scope(Resource)
-    @resources = @resources.search_by_title_and_description(params[:search][:query]) if params[:search][:query].present? && params[:search][:query] != [""]
-    @resources = @resources.tagged_with(params[:search][:tags]) if params[:search][:tags].present? && params[:search][:tags] != [""]
+    @resources = @resources.search_by_title_and_description(params[:query]) if params[:query].present? && params[:query] != [""]
+    @resources = @resources.tagged_with(params[:tags]) if params[:tags].present? && params[:tags] != [""]
     @resources = @resources.page params[:page]
   end
 

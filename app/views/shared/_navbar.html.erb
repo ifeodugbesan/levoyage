@@ -40,10 +40,10 @@
               <% end %>
             </li>
             <li class="nav-item active">
-              <%= link_to "ISSUES", issues_path(search: { query: "" }), class: "nav-link" %>
+              <%= link_to "ISSUES", issues_path, class: "nav-link" %>
             </li>
             <li class="nav-item active">
-              <%= link_to "RESOURCES", resources_path(search: { query: "" }), class: "nav-link" %>
+              <%= link_to "RESOURCES", resources_path, class: "nav-link" %>
             </li>
             <% if user_signed_in? %>
               <li class="nav-item active">
