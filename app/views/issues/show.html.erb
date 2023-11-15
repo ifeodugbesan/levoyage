@@ -25,6 +25,11 @@
             <% end %>
           </div>
           <hr>
+          <div class="error-message">
+            <p class="">Error message:</p>
+            <p class=""><%= @issue.error_message %></p>
+          </div>
+          <hr>
           <%= @issue.content %>
         </turbo-frame>
         <!-- Alternative solutions -->
