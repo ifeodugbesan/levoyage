@@ -3,6 +3,7 @@
     <h3 class="boldest text-center mt-5 mb-4 <%= @dark_mode ? 'grey' : 'black' %>">Solved an issue?</h3>
     <%= simple_form_for @issue do |f| %>
       <%= f.input :title, input_html: { class: 'form-input', placeholder: 'The title of your issue is?' } %>
+      <%= f.input :error_message, input_html: { class: 'form-input', placeholder: 'What was your error message... (optional)' } %>
       <%= f.rich_text_area :content, placeholder: 'Add issue content here (use style buttons above to customise your article)', class: "normal-mode" %>
       <%= f.input :tags, label: 'Tags', collection: ActsAsTaggableOn::Tag.all, value_method: :name, input_html: { multiple: true, data: { controller: 'select2', select2_options_value: { tags: true }}} %>
 

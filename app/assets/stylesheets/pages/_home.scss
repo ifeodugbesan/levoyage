@@ -101,3 +101,14 @@
   }
 }
 
+.error-message {
+  border: 1px solid #CC0100;
+  background: #CC0100;
+  padding: 12px;
+  font-family: 'Figtree', sans-serif;
+  font-weight: 400;
+  p {
+    color: #FFFFFF;
+  }
+}
+
