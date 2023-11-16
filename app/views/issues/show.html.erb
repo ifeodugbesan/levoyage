@@ -25,11 +25,13 @@
             <% end %>
           </div>
           <hr>
-          <div class="error-message">
-            <p class="">Error message:</p>
-            <p class=""><%= @issue.error_message %></p>
-          </div>
-          <hr>
+          <% if @issue.error_message.present? %>
+            <div class="error-message">
+              <p class="">Error message:</p>
+              <p class=""><%= @issue.error_message %></p>
+            </div>
+            <hr>
+          <% end %>
           <%= @issue.content %>
         </turbo-frame>
         <!-- Alternative solutions -->

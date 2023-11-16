@@ -48,7 +48,10 @@
               <div id="issueCard<%= issue.id %>" class="issues-card">
                 <div class="d-flex justify-content-between w-100">
                   <div class="flex-grow-1">
-                    <h4 class="mb-0"><%= issue.title %></h4>
+                    <h4><%= issue.title %></h4>
+                    <% if issue.error_message.present? %>
+                      <p class="mb-0 err-msg"><%= issue.error_message %></h4>
+                    <% end %>
                     <div class="issue-user pt-3">
                       <p class="posted mb-0">Posted by <span class="text-link"><%= issue.user.name %></span></p>
                       <p class="posted date-posted mb-0"><%= time_ago_in_words(issue.created_at) %> ago</p>
