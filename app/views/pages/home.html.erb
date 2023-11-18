@@ -4,9 +4,9 @@
       <h1>Find solutions for your issues</h1>
       <p>Search for an issue that you've been stuck on and find solutions posted by the Le Wagon alumni community!</p>
       <div class="banner-form">
-        <%= simple_form_for :search, url: issues_path, method: "GET", html: { class: 'd-flex' } do |f| %>
-          <%= f.input :query, label: false, placeholder: "What issue are you having?", input_html: { class: "form-control form-input inline-form w-100" } %>
-          <%= f.submit "SEARCH", class: "btn form-btn" %>
+        <%= form_with url: issues_path, method: "GET", html: { class: 'd-flex mb-3' } do |f| %>
+          <%= text_field_tag :query, params[:query], label: false, placeholder: "What issue are you having?", class: 'form-control form-input inline-form w-100', value: params[:query] %>
+          <%= button_tag "SEARCH", class: "btn form-btn" %>
         <% end %>
       </div>
     </div>

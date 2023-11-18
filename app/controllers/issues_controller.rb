@@ -2,7 +2,6 @@ class IssuesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    # raise
     @tags = ActsAsTaggableOn::Tagging.where(taggable_type: "Issue").map { |tagging| tagging.tag }.uniq
     @issues = policy_scope(Issue).order(created_at: :desc)
     @issues = @issues.search_by_fields(params[:query]) if params[:query].present? && params[:query] != ""
