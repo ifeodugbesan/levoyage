@@ -13,6 +13,10 @@
 .dark-mode {
   background: #0A0A0A;
 
+  .bg-purple {
+    background: linear-gradient(to top, $purple 10%, #2E005A);
+  }
+
   h1 {
     color: #616161;
   }
