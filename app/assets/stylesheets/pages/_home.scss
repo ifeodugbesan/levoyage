@@ -68,6 +68,12 @@
   }
 }
 
+.slant {
+  @include media-breakpoint-down(sm) {
+    margin-bottom: -1px;
+  };
+}
+
 .badges {
   display: flex;
   justify-content: center;
