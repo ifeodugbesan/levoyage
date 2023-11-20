@@ -68,10 +68,8 @@
   }
 }
 
-.slant {
-  @include media-breakpoint-down(sm) {
-    margin-bottom: -1px;
-  };
+.road-break {
+  transform: scaleY(1.01);
 }
 
 .badges {
