@@ -23,18 +23,18 @@
           </div>
         </div>
         <div class="offcanvas-body">
-           <ul class="navbar-nav justify-content-end flex-grow-1">
+           <ul class="navbar-nav justify-content-end align-items-center flex-grow-1">
             <li class="nav-item active">
               <% if @dark_mode %>
                 <div class="d-flex align-items-center h-100">
                   <%= link_to toggle_dark_mode_path(dark_mode: false), class: "nav-link light" do %>
-                    <i class="bi bi-brightness-high-fill light"></i>
+                  <%= image_tag "sun.png", width: 32 %>
                   <% end %>
                 </div>
               <% else %>
                 <div class="d-flex align-items-center h-100">
                   <%= link_to toggle_dark_mode_path(dark_mode: true), class: "nav-link dark" do %>
-                    <i class="bi bi-moon-stars-fill dark"></i>
+                    <%= image_tag "moon.png", width: 32 %>
                   <% end %>
                 </div>
               <% end %>
