@@ -50,7 +50,11 @@
             <div class="resource-card">
               <div class="resource-image-container mb-3">
                 <%= link_to resource.link, target: '_blank' do %>
-                  <%= cl_image_tag resource.photo.key, class: 'resource-image w-100' %>
+                  <% if resource.photo.attached? %>
+                    <%= cl_image_tag resource.photo.key, class: 'resource-image w-100' %>
+                  <% else %>
+                    <%= image_tag 'default-resource.png', class: 'resource-image w-100' %>
+                  <% end %>
                 <% end %>
                 <div class="upvote">
                   <%= render 'shared/votes', subject: resource %>
