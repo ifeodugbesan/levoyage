@@ -1,6 +1,7 @@
-# one:
-#   title: "Error when running bundle install"
-#   created_at: Wed, 15 Nov 2023 15:05:54.311914000 UTC +00:00
-#   updated_at: Thu, 16 Nov 2023 10:48:19.737361000 UTC +00:00
-#   slug: "error-when-running-bundle-install"
-#   error_message: "#<NameError: uninitialized constant Gem::Source (defined?(@source) && @source) || Gem::Source::Installed.new"
+one:
+  title: "Error when running bundle install"
+  created_at: Wed, 15 Nov 2023 15:05:54.311914000 UTC +00:00
+  updated_at: Thu, 16 Nov 2023 10:48:19.737361000 UTC +00:00
+  slug: "error-when-running-bundle-install"
+  error_message: "#<NameError: uninitialized constant Gem::Source (defined?(@source) && @source) || Gem::Source::Installed.new"
+  user: "ife"

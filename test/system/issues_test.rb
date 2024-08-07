@@ -1,6 +1,7 @@
 require "application_system_test_case"
 
 class IssuesTest < ApplicationSystemTestCase
+
   test "creating an issue with a signed in user" do
     login_as users(:ife)
     visit "issues/new"
