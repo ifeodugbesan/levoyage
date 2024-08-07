@@ -4,7 +4,7 @@ class Resource < ApplicationRecord
   acts_as_taggable_on :tags
   acts_as_votable
   paginates_per 10
-  include PgSearch
+  include PgSearch::Model
   pg_search_scope :search_by_title_and_description,
                   against: [:title, :description],
                   using: {
