@@ -46,7 +46,7 @@ gem 'friendly_id', '~> 5.4.0'
 gem 'pundit'
 
 # Faker
-gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+gem 'faker', git: 'https://github.com/faker-ruby/faker.git'
 
 # Kaminari
 gem 'kaminari'
