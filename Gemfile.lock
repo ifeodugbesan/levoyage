@@ -132,8 +132,16 @@ GEM
       logger
     faraday-net_http (3.1.1)
       net-http
+    ffi (1.17.0-aarch64-linux-gnu)
+    ffi (1.17.0-aarch64-linux-musl)
+    ffi (1.17.0-arm-linux-gnu)
+    ffi (1.17.0-arm-linux-musl)
     ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0-x86-linux-gnu)
+    ffi (1.17.0-x86-linux-musl)
     ffi (1.17.0-x86_64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
+    ffi (1.17.0-x86_64-linux-musl)
     font-awesome-sass (6.5.2)
       sassc (~> 2.0)
     friendly_id (5.4.2)
@@ -206,9 +214,17 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.3)
+    nokogiri (1.16.7-aarch64-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.7-arm-linux)
+      racc (~> 1.4)
     nokogiri (1.16.7-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.16.7-x86-linux)
+      racc (~> 1.4)
     nokogiri (1.16.7-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -334,7 +350,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uri (0.13.0)
+    uri (0.11.2)
     version_gem (1.1.4)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -352,8 +368,20 @@ GEM
     zeitwerk (2.6.17)
 
 PLATFORMS
+  aarch64-linux
+  aarch64-linux-gnu
+  aarch64-linux-musl
+  arm-linux
+  arm-linux-gnu
+  arm-linux-musl
   arm64-darwin
+  x86-linux
+  x86-linux-gnu
+  x86-linux-musl
   x86_64-darwin
+  x86_64-linux
+  x86_64-linux-gnu
+  x86_64-linux-musl
 
 DEPENDENCIES
   acts-as-taggable-on (~> 9.0)
@@ -387,10 +415,11 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  uri (~> 0.11.0)
   web-console
 
 RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.5.15
+   2.5.17

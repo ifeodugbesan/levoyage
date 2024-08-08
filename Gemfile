@@ -27,6 +27,9 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Use URI
+gem "uri", "~> 0.11.0"
+
 # Cloudinary
 gem 'cloudinary', '~> 1.16.0'
 
