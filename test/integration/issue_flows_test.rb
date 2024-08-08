@@ -2,7 +2,7 @@ require "test_helper"
 
 class IssueFlowsTest < ActionDispatch::IntegrationTest
   test "can see the landing page" do
-    get root_url
+    get "/"
     assert_response :success
     assert_select "h1", text: "Find solutions for your issues"
   end
