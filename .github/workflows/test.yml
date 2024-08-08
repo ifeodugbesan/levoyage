@@ -53,7 +53,5 @@ jobs:
           bundle exec rails db:test:prepare
       - name: Run model tests
         run: bundle exec rails test
-      - name: Run integration tests
-        run: bundle exec rails test:integration
       - name: Run system tests
         run: bundle exec rails test:system
