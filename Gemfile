@@ -29,6 +29,7 @@ gem "jbuilder"
 
 # Use URI
 gem "uri", "~> 0.11.0"
+gem "ffi", "< 1.17.0"
 
 # Cloudinary
 gem 'cloudinary', '~> 1.16.0'
