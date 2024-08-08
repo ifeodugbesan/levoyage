@@ -350,7 +350,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uri (0.11.2)
+    uri (0.13.0)
     version_gem (1.1.4)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -415,11 +415,10 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
-  uri (~> 0.11.0)
   web-console
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.3.0p0
 
 BUNDLED WITH
-   2.5.17
+   2.5.7
