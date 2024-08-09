@@ -21,4 +21,8 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
+
+  def signed_in_with_github?
+    provider == "github"
+  end
 end
