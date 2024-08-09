@@ -1,6 +1,6 @@
 require "test_helper"
 
-class IssueTest < ActionDispatch::IntegrationTest
+class IssueFlowsTest < ActionDispatch::IntegrationTest
   test "can see the landing page" do
     get root_url
     assert_response :success
