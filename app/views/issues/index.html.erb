@@ -1,8 +1,11 @@
 <div class="wrapper" data-controller="issues">
   <div class="issues-wrapper">
-    <%= link_to 'https://kitt.lewagon.com/knowledge/tutorials', target: '_blank' do %>
-      <div class="top-ad" style="background-image: url(<%= asset_path 'le-wagon-ad.png' %>)"></div>
+    <%= link_to 'https://lightningrails.com/', target: '_blank' do %>
+      <div class="top-ad" style="background-image: url(<%= asset_path 'lightning-rails.png' %>)"></div>
     <% end %>
+    <%#= link_to 'https://kitt.lewagon.com/knowledge/tutorials', target: '_blank' do %>
+<!--      <div class="top-ad" style="background-image: url(<%#= asset_path 'le-wagon-ad.png' %>)"></div>-->
+    <%# end %>
     <%= form_with url: issues_path, method: "GET", html: { class: 'form-inline' } do |f| %>
       <div class="mb-3 string required search_query">
         <%= text_field_tag :query, params[:query], label: false, placeholder: "What issue are you having?", class: 'form-input form-control', value: params[:query] %>
@@ -77,8 +80,8 @@
         </div>
       </div>
       <div class="side-ad-container">
-        <%= link_to 'https://www.descarbonize.com/en', target: '_blank' do  %>
-          <div class="side-ad" style="background-image: url(<%= asset_path 'descarbonize.png' %>)"></div>
+        <%= link_to 'https://www.lewagon.com/blog', target: '_blank' do  %>
+          <div class="side-ad" style="background-image: url(<%= asset_path 'blog-ad.png' %>)"></div>
         <% end %>
       </div>
     </div>
