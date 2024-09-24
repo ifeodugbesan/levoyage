@@ -13,7 +13,7 @@ class IssuesTest < ApplicationSystemTestCase
 
     fill_in "Title", with: "Test issue"
     fill_in "Error message", with: "This is a test issue"
-    fill_in_rich_text_area "content", with: "This is the content of the test issue"
+    fill_in_rich_text_area "issue[content]", with: "This is the content of the test issue"
     click_on "LET'S SOLVE IT!"
 
     assert_text "Test issue"
