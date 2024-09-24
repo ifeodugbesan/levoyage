@@ -3,4 +3,5 @@ class Alternative < ApplicationRecord
   belongs_to :issue
   has_rich_text :content
   acts_as_votable
+  validates :content, presence: true
 end

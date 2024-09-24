@@ -1,5 +1,5 @@
 meta_product_name: "Le Voyage"
 meta_title: "Le Voyage | Alumni"
-meta_description: "The Le Wagon alumni community. We are a community and network of Le Wagon alumni who stay connected by tips and resources."
+meta_description: "Support the Le Wagon community by uploading solutions for issues you have come across in your time as a developer."
 meta_image: "meta-image.jpg" # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"   # required for Twitter Cards

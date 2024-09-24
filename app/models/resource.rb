@@ -10,4 +10,5 @@ class Resource < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+  validates :link, presence: true
 end

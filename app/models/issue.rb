@@ -17,4 +17,5 @@ class Issue < ApplicationRecord
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
   validates :title, presence: true
+  validates :content, presence: true
 end
