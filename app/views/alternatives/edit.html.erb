@@ -3,7 +3,7 @@
     <h3 class="boldest text-center mt-5 mb-4 <%= @dark_mode ? 'grey' : 'black' %>">Edit your alternative solution</h3>
     <%= simple_form_for [@issue, @alternative] do |f| %>
       <%= f.rich_text_area :content, placeholder: 'Add issue content here (use style buttons above to customise your article)', class: "normal-mode" %>
-      <%= f.submit "LET'S ADD IT!", class: 'primary-button' %>
+      <%= f.submit "LET'S AMEND IT!", class: 'primary-button' %>
     <% end %>
   </div>
 </div>
