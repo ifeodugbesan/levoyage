@@ -16,9 +16,22 @@
 <%#= image_tag @dark_mode ? 'slanted-dark.svg' : 'slanted.svg', class: "w-100 slant" %>
 <%= image_tag @dark_mode ? 'road-break-dark.svg' : 'road-break.svg', class: "w-100 road-break" %>
 <section class="bg-purple">
-  <div class="wrapper wrapper-p">
-    <div class="home-support">
-      <p class="mb-5 text-center">Support the Le Wagon community by uploading solutions for issues you’ve come across in your time as a developer.</p>
+  <div class="wrapper wrapper-p contributor-wrapper">
+    <div class="contributor-container">
+      <%= image_tag 'contributor-splat.svg', class: "contributor-img" %>
+      <div class="contributors">
+        <h1 class="mb-2">Top Contributors</h1>
+        <% @top_users.each do |user| %>
+          <div class="subject-user my-1">
+            <%= image_tag user.image_url, class: "avatar me-2", style: "border: 1px solid yellow" %>
+            <div class="">
+              <h4 class="posted mb-0"><%= user.name %></h4>
+              <p class="posted mb-0"><%= pluralize(user.issues.count, 'Issue') %> - <%= pluralize(user.resources.count, 'Resource') %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
+    <p class="text-center home-support">Support the Le Wagon community by uploading solutions for issues you’ve come across in your time as a developer.</p>
   </div>
 </section>

@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: %i[github]
   has_one_attached :avatar
   has_many :issues
+  has_many :resources
   has_many :alternatives
   acts_as_voter
 
