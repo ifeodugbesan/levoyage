@@ -39,7 +39,7 @@
                 </div>
               <% end %>
             </li>
-            <% if current_user.admin? %>
+            <% if current_user&.admin? %>
               <li class="nav-item active">
                 <%= link_to "ALL USERS", users_path, class: "nav-link" %>
               </li>
