@@ -1,8 +1,8 @@
 <div class="container my-5">
   <div class="row">
     <% @users.each do |user| %>
-      <div class="col-12 col-md-4 col-lg-3">
-        <div class="subject-user my-1">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="subject-user my-3">
           <%= image_tag user.image_url, class: "avatar me-2", style: "border: 1px solid yellow" %>
           <div class="">
             <h4 class="posted mb-0"><%= user.name %></h4>
