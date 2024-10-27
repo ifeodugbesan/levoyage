@@ -22,6 +22,13 @@ hljs.registerLanguage('shell', shell);
 hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('yaml', yaml);
 
+// ADDING KEYWORDS TO BASH/ZSH
+const kwds = ['bin/dev', 'brew', 'bundle', 'cd', 'gem', 'git', 'gh', 'grep', 'heroku', 'importmap', 'irb', 'ls', 'mysql', 'node', 'php', 'postgresql', 'psql',
+  'rails', 'rake', 'rm', 'service', 'sudo', 'touch', 'webpack',  'wget', 'yarn', 'zsh'];
+
+const built_in = hljs.getLanguage('bash').keywords.built_in;
+hljs.getLanguage('bash').keywords.built_in = [...new Set([...built_in ,...kwds])];
+
 export default class extends Controller {
   static targets = ["tags", "tagsBtn", "form"]
   connect() {
@@ -32,9 +39,16 @@ export default class extends Controller {
     //     this.tagsBtnTarget.classList.add('collapsed')
     //   }
     // }
+
+    
+
+    // hljs.getLanguage('bash').keywords.heroku = ['built_in', 1]
     document.querySelectorAll('pre').forEach((el) => {
       hljs.highlightElement(el);
     });
+
+    console.log(typeof(hljs.getLanguage('bash').keywords))
+    console.log(hljs.getLanguage('bash').keywords)
   }
 
   showForm() {
