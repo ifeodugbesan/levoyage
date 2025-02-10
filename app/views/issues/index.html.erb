@@ -48,7 +48,7 @@
         <% @issues.each do |issue| %>
           <%= link_to issue_path(issue), style: 'text-decoration: none; color: inherit;' do %>
             <div class="issue-card-container">
-              <div id="issueCard<%= issue.id %>" class="issues-card">
+              <div id="issueCard<%= issue.id %>" class="issues-card text-break">
                 <div class="d-flex justify-content-between w-100">
                   <div class="flex-grow-1">
                     <h4><%= issue.title %></h4>
