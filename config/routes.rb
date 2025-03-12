@@ -23,4 +23,12 @@ Rails.application.routes.draw do
       post 'remove_upvote'
     end
   end
+
+  # CONNECTIONS
+  #
+  resources :connections do
+    member do
+      post "check_guess"
+    end
+  end
 end

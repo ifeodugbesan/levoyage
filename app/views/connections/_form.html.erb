@@ -1,0 +1,22 @@
+<%= form_with url: check_guess_connection_path(@connection), method: :post, data: { guesses_target: "form", action: "submit->guesses#submitGuess" } do |form| %>
+  <div class="game-grid-container">
+    <% solved_connections.each_with_index do |solved_connection, index| %>
+      <div class="solved-connection <%= solved_connection.group.level %>">
+        <h5><%= solved_connection.group.title %></h5>
+        <p class="mb-0"><%= solved_connection.group.words.join(", ") %></p>
+      </div>
+    <% end %>
+    <div class="game-grid">
+      <% remaining_words.each_with_index do |word, index| %>
+        <%= form.check_box :guess, { multiple: true, class: "d-none connection", id: word, data: { word: word, guesses_target: "checkbox", action: "change->guesses#checkGuess" } }, word, nil %>
+        <%= form.label word, word, class: "connection", data: { guesses_target: "label" } %>
+      <% end %>
+    </div>
+  </div>
+  <p class="mistakes">Mistakes remaining: <%= "<i class='fa-solid fa-circle ms-2'></i>".html_safe * connection.mistakes_remaining %></p>
+  <div class="d-flex align-items-center justify-content-center mt-3">
+    <p class="secondary-button con-btn me-3 mb-3 disabled" data-action="click->guesses#deselect" data-guesses-target="deselect">DESELECT ALL</p>
+    <!--<p class="primary-button con-btn disabled" data-guesses-target="submit">SUBMIT</p>-->
+    <%= submit_tag "Submit", name: "", class: "primary-button", data: { guesses_target: "hiddenSubmit" } %>
+  </div>
+<% end %>

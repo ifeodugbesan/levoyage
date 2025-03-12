@@ -1,0 +1,117 @@
+// Specific CSS for your home-page
+
+body {
+  background: #FFFFFF;
+}
+
+.game-grid-container {
+  width: 624px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 8px;
+}
+
+.game-grid {
+  width: 624px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 8px;
+}
+
+.connection {
+  padding: 8px;
+  background: #EFEFE6;
+  background-color: #EFEFE6;
+  border-radius: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  word-break: break-word;
+  cursor: pointer;
+  transition: background 0.1s ease, transform 1s ease;
+}
+
+.connection:checked + label {
+  background-color: #5a594e;
+  color: #FFFFFF;
+}
+
+.message {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.solved-connection {
+  text-transform: uppercase;
+  grid-column: 1 / 2;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border-radius: 8px;
+  h5 {
+    font-weight: 700;
+    margin: 0;
+  }
+  p {
+    font-size: 18px;
+  }
+}
+
+.mistakes {
+  width: 272px;
+  margin: 16px auto 0;
+  color: #656565;
+}
+
+.bounce {
+  animation: bounce 0.25s ease-in-out;
+}
+
+.shake {
+  animation: bounce 0.25s ease-in-out;
+}
+
+.fade-in {
+  background-color: #EFEFE6 !important;
+  color: #EFEFE6 !important;
+}
+
+.move-to-top {
+  grid-row: 1;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateY(0);
+  }
+  33% {
+    transform: translateX(8px);
+  }
+  66% {
+    transform: translateX(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+

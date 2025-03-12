@@ -1,0 +1,20 @@
+<div class="container mt-5 pt-5">
+  <div class="row">
+    <% @connections.each do |connection| %>
+      <div class="col-6">
+        <%= link_to connection_path(connection), class: "text-decoration-none" do %>
+          <div class="row m-0">
+            <% connection.groups.pluck(:words).flatten.each do |word| %>
+              <div class="col-3 px-1 mb-2">
+                <div class="card rounded-3 d-flex justify-content-center align-items-center p-2">
+                  <p class="mb-0"><%= word %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

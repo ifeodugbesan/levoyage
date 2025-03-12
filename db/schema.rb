@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_15_135321) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_11_111719) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,6 +61,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_15_135321) do
     t.index ["user_id"], name: "index_alternatives_on_user_id"
   end
 
+  create_table "connections", force: :cascade do |t|
+    t.integer "mistakes_remaining", default: 4
+    t.boolean "completed", default: false
+    t.boolean "daily", default: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_connections_on_user_id"
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -70,6 +80,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_15_135321) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "group_connections", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "connection_id", null: false
+    t.boolean "solved", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["connection_id"], name: "index_group_connections_on_connection_id"
+    t.index ["group_id"], name: "index_group_connections_on_group_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "title"
+    t.string "words", array: true
+    t.string "level"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "issues", force: :cascade do |t|
@@ -162,6 +192,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_15_135321) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "alternatives", "issues"
   add_foreign_key "alternatives", "users"
+  add_foreign_key "connections", "users"
+  add_foreign_key "group_connections", "connections"
+  add_foreign_key "group_connections", "groups"
+  add_foreign_key "groups", "users"
   add_foreign_key "issues", "users"
   add_foreign_key "resources", "users"
   add_foreign_key "taggings", "tags"
