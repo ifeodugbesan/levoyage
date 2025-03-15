@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_03_11_111719) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_14_154844) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,10 +61,19 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_11_111719) do
     t.index ["user_id"], name: "index_alternatives_on_user_id"
   end
 
-  create_table "connections", force: :cascade do |t|
+  create_table "attempts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "connection_id", null: false
     t.integer "mistakes_remaining", default: 4
     t.boolean "completed", default: false
-    t.boolean "daily", default: false
+    t.boolean "failed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["connection_id"], name: "index_attempts_on_connection_id"
+    t.index ["user_id"], name: "index_attempts_on_user_id"
+  end
+
+  create_table "connections", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -100,6 +109,14 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_11_111719) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "guesses", force: :cascade do |t|
+    t.string "words", array: true
+    t.bigint "attempt_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attempt_id"], name: "index_guesses_on_attempt_id"
   end
 
   create_table "issues", force: :cascade do |t|
@@ -192,10 +209,13 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_11_111719) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "alternatives", "issues"
   add_foreign_key "alternatives", "users"
+  add_foreign_key "attempts", "connections"
+  add_foreign_key "attempts", "users"
   add_foreign_key "connections", "users"
   add_foreign_key "group_connections", "connections"
   add_foreign_key "group_connections", "groups"
   add_foreign_key "groups", "users"
+  add_foreign_key "guesses", "attempts"
   add_foreign_key "issues", "users"
   add_foreign_key "resources", "users"
   add_foreign_key "taggings", "tags"

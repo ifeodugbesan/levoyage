@@ -9,31 +9,7 @@ class ConnectionsController < ApplicationController
   def show
     @connection = Connection.find(params[:id])
     authorize @connection
-  end
-
-  def check_guess
-    @success = false
-    @message = ""
-    @group_connections.each do |group_connection|
-      group = group_connection.group
-      if (group.words - params[:guess]).empty?
-        group_connection.update(solved: true)
-        @success = true
-      elsif (group.words - params[:guess]).length == 1
-        @message = "One away..."
-      end
-    end
-    @connection.update(mistakes_remaining: @connection.mistakes_remaining - 1) unless @success
-    @connection.update(completed: true) if @connection.mistakes_remaining.zero? || @group_connections.reject(&:solved).empty?
-
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.append(:messages, partial: "connections/form",
-                                                            target: "form",
-                                                            locals: { solved_connections: @solved_connections, remaining_words: @remaining_words })
-      end
-      format.html { redirect_to connection_path(@connection) }
-    end
+    @attempt = Attempt.find_or_create_by(user: current_user, connection: @connection)
   end
 
   def new
@@ -60,8 +36,8 @@ class ConnectionsController < ApplicationController
     @group_connections = @connection.group_connections
     @connections = @connection.groups
     @words = @connections.pluck(:words).flatten
-    @solved_connections = @group_connections.select(&:solved).sort_by(&:updated_at)
-    @unsolved_connections = @group_connections.reject(&:solved)
-    @remaining_words = @unsolved_connections.map { |gc| gc.group.words }.flatten.shuffle
+    @solved_groups = @group_connections.select(&:solved).sort_by(&:updated_at)
+    @unsolved_groups = @group_connections.reject(&:solved)
+    @remaining_words = @unsolved_groups.map { |gc| gc.group.words }.flatten.shuffle
   end
 end

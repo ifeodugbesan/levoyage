@@ -1,14 +1,9 @@
-<div class="container mt-5 pt-5" data-controller="guesses">
+<div class="container mt-5 pt-5 position-relative" data-controller="guesses" data-guesses-target="container">
+  <%= render "connections/results", attempt: @attempt %>
   <div class="mt-5 pt-5">
-    <p class="text-center">Game finished: <%= @connection.completed %></p>
-    <% if @message.present? %>
-      <div class="popup">
-        <%= @message %>
-      </div>
-    <% end %>
-    <div id="form">
-      <%= render "form", connection: @connection, solved_connections: @solved_connections, remaining_words: @remaining_words %>
+    <p class="text-center">Create four groups of four!</p>
+    <div id="form" data-guesses-target="formContainer">
+      <%= render "connections/form", connection: @connection, attempt: @attempt, solved_groups: @solved_groups, unsolved_groups: @unsolved_groups, remaining_words: @remaining_words %>
     </div>
   </div>
 </div>
-

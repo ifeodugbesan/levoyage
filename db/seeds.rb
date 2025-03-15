@@ -3,24 +3,38 @@
 
 GroupConnection.destroy_all
 Group.destroy_all
+Guess.destroy_all
+Attempt.destroy_all
 Connection.destroy_all
 
-user = User.first
-connection = Connection.create(user: user)
+# ife = User.create!(email: 'ife@gmail.com', password: 123456, name: "Ife Odugbesan", nickname: "ifeodugbesan", image_url: "https://avatars.githubusercontent.com/u/42211692?v=4", admin: true)
+ife = User.first
 
-one = Group.create(title: "Countries", words: ["England", "France", "Spain", "Portugal"], level: "easy", user: user)
-Group.create(title: "Snakes", words: ["Python", "Cobra", "Anaconda", "Bran"], level: "easy", user: user)
-Group.create(title: "Stark family members", words: ["Eddard", "Sansa", "Arya", "Bran"], level: "medium", user: user)
-two = Group.create(title: "Cities", words: ["London", "Paris", "Porto", "Madrid"], level: "medium", user: user)
-three = Group.create(title: "Fruits", words: ["Apple", "Orange", "Pineapple", "Banana"], level: "hard", user: user)
-Group.create(title: "Golf Brands", words: ["Callaway", "Cobra", "Taylormade", "Takomo"], level: "hard", user: user)
-Group.create(title: "Ruby Keywords", words: ["Raise", "Break", "Return", "Super"], level: "very-hard", user: user)
-four = Group.create(title: "Football Teams", words: ["Man Utd", "Liverpool", "Arsenal", "Chelsea"], level: "very-hard", user: user)
+connection = Connection.create(user: ife)
+connection_two = Connection.create(user: ife)
+
+one = Group.create(title: "Countries", words: ["England", "France", "Spain", "Portugal"], level: "easy", user: ife)
+two = Group.create(title: "Cities", words: ["London", "Paris", "Porto", "Madrid"], level: "medium", user: ife)
+three = Group.create(title: "Fruits", words: ["Apple", "Orange", "Pineapple", "Banana"], level: "hard", user: ife)
+four = Group.create(title: "Football Teams", words: ["Man Utd", "Liverpool", "Arsenal", "Chelsea"], level: "very-hard", user: ife)
+
+five = Group.create(title: "Snakes", words: ["Python", "Cobra", "Anaconda", "Boa"], level: "easy", user: ife)
+six = Group.create(title: "Stark family members", words: ["Eddard", "Sansa", "Arya", "Bran"], level: "medium", user: ife)
+seven = Group.create(title: "Golf Brands", words: ["Callaway", "Ping", "Taylormade", "Takomo"], level: "hard", user: ife)
+eight = Group.create(title: "Ruby Keywords", words: ["Raise", "Break", "Return", "Super"], level: "very-hard", user: ife)
 
 GroupConnection.create(connection: connection, group: one)
 GroupConnection.create(connection: connection, group: two)
 GroupConnection.create(connection: connection, group: three)
 GroupConnection.create(connection: connection, group: four)
+
+GroupConnection.create(connection: connection_two, group: five)
+GroupConnection.create(connection: connection_two, group: six)
+GroupConnection.create(connection: connection_two, group: seven)
+GroupConnection.create(connection: connection_two, group: eight)
+
+Attempt.create(user: ife, connection: connection)
+Attempt.create(user: ife, connection: connection_two)
 
 # CONNECTIONS SEED
 

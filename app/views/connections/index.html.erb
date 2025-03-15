@@ -13,6 +13,20 @@
             <% end %>
           </div>
         <% end %>
+        <div class="d-flex align-items-center justify-content-between my-1 mx-1">
+          <div class="d-flex align-items-center">
+            <%= image_tag connection.user.image_url, class: "avatar mx-2", style: "border: 1px solid yellow" %>
+            <h4 class="posted mb-0"><%= connection.user.name %></h4>
+          </div>
+          <% @attempt = current_user.attempts.find_by(connection: connection) %>
+          <% if @attempt&.completed %>
+            <%= image_tag 'completed.svg', width: 38 %>
+          <% elsif @attempt&.failed %>
+            <%= image_tag 'failed.svg', width: 38 %>
+          <% else %>
+            <%= image_tag 'unplayed.svg', width: 38 %>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>

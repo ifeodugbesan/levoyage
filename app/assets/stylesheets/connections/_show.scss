@@ -9,14 +9,17 @@ body {
   margin: 0 auto;
   display: grid;
   grid-gap: 8px;
+  position: relative;
 }
 
 .game-grid {
   width: 624px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 8px;
+  position: relative;
+  justify-content: center;
+  transition: opacity 0.6s ease;
 }
 
 .connection {
@@ -30,7 +33,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
+  font-size: 18px;
   word-break: break-word;
   cursor: pointer;
   transition: background 0.1s ease, transform 1s ease;
@@ -46,10 +49,12 @@ body {
   color: #FFFFFF;
 }
 
-.solved-connection {
+.formed-group {
   text-transform: uppercase;
   grid-column: 1 / 2;
   height: 80px;
+  margin: 0 auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,6 +91,171 @@ body {
 
 .move-to-top {
   grid-row: 1;
+}
+
+.popup {
+  padding: 8px 10px;
+  background: #000000;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-size: 14px;
+  position: absolute;
+  top: -72px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.results-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #FFFFFF;
+  transition: opacity 0.6s ease;
+  z-index: 2;
+  opacity: 0;
+  border-radius: 8px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  animation: show 1s ease;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 2px;
+
+}
+
+.color-block {
+  height: 24px;
+  width: 24px;
+  border-radius: 2px;
+}
+
+.connection-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 8px;
+  h6 {
+    font-size: 24px;
+    font-weight: 400;
+  }
+  p {
+    font-size: 14px;
+  }
+}
+
+.star-big {
+  font-size: 40px;
+  color: $purple;
+}
+
+.close {
+  cursor: pointer;
+}
+
+.cross {
+  font-size: 20px;
+}
+
+.shake-horizontally {
+  animation: shake-horizontally 0.3s ease-in-out;
+}
+
+.wrong-guess {
+  animation: shake 0.3s ease-in-out;
+  opacity: 0.5;
+}
+
+.one-mistake {
+  animation: one-mistake-down 1s ease-in-out;
+}
+
+.hide-section {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.inserted-group {
+  grid-column: span 4;
+  position: absolute;
+  top: 0;
+  justify-self: center;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 1;
+  transition: width 0.4s ease;
+  animation: expand 0.4s ease;
+}
+
+.reveal {
+  animation: show 0.6s ease;
+}
+
+.back-to-connections {
+  animation: show 2s ease;
+  // animation-delay: 1s;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes expand {
+  0% {
+    transform: scale(0);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes one-mistake-down {
+  0% {
+    transform: scale(1);
+  }
+  33% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(0);
+  }
+  75% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes shake-horizontally {
+  0% {
+    margin-left: 0;
+  }
+  33% {
+    margin-left: 8px;
+  }
+  66% {
+    margin-left: -8px;
+  }
+  100% {
+    margin-left: 0;
+  }
 }
 
 @keyframes shake {

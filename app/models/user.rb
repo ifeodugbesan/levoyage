@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :resources
   has_many :alternatives
   acts_as_voter
+  has_many :attempts
+  has_many :connections
+  has_many :groups
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -25,5 +28,23 @@ class User < ApplicationRecord
 
   def signed_in_with_github?
     provider == "github"
+  end
+
+  def completed_attempts
+    attempts.select { |a| a.completed || a.failed }.size
+  end
+
+  def connections_percentage
+    @played = completed_attempts
+    @wins = attempts.select(&:completed).size
+    @wins > 0 ? (@wins / @played.to_f * 100).round : 0
+  end
+
+  def current_streak
+
+  end
+
+  def max_streak
+
   end
 end
