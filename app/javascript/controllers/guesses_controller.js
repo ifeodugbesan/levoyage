@@ -8,7 +8,7 @@ export default class extends Controller {
   connect() {
   }
 
-  checkGuess(event) {
+  checkGuess() {
     const checkboxes = this.checkboxTargets.filter(checkbox => checkbox.checked);
     const unchecked = this.checkboxTargets.filter(checkbox => !checkbox.checked);
 
@@ -129,17 +129,6 @@ export default class extends Controller {
             this.mistakesContainerTarget.classList.add('hide-section');
           }, 1100);
           setTimeout(() => {
-            const buttons = `
-              <div class="d-flex align-items-center justify-content-center mt-3 back-to-connections">
-                <p class="secondary-button con-btn me-3 mb-0" data-action="click->guesses#showResults" data-guesses-target="deselect">VIEW RESULTS</p>
-                <a class="btn secondary-button" href="/connections">GO BACK TO CONNECTIONS</a>
-              </div>
-            `
-            this.formContainerTarget.insertAdjacentHTML("beforeend", buttons)
-            this.buttonsTarget.classList.add('d-none');
-            this.mistakesContainerTarget.classList.add('d-none');
-          }, 2100);
-          setTimeout(() => {
             this.containerTarget.insertAdjacentHTML("afterbegin", data.inserted_results)
           }, 2100);
         }
@@ -191,6 +180,18 @@ export default class extends Controller {
           }, 2100);
           setTimeout(() => {
             this.gridContainerTarget.insertAdjacentHTML("beforeend", data.inserted_unsolved)
+          }, 2100);
+          
+          setTimeout(() => {
+            const buttons = `
+              <div class="d-flex align-items-center justify-content-center mt-3 back-to-connections">
+                <p class="secondary-button con-btn me-3 mb-0" data-action="click->guesses#showResults" data-guesses-target="deselect">VIEW RESULTS</p>
+                <a class="btn secondary-button" href="/connections">GO BACK TO CONNECTIONS</a>
+              </div>
+            `
+            this.formContainerTarget.insertAdjacentHTML("beforeend", buttons)
+            this.buttonsTarget.classList.add('d-none');
+            this.mistakesContainerTarget.classList.add('d-none');
           }, 2100);
         }
 
