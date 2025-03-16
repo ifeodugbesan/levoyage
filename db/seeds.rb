@@ -33,8 +33,8 @@ GroupConnection.create(connection: connection_two, group: six)
 GroupConnection.create(connection: connection_two, group: seven)
 GroupConnection.create(connection: connection_two, group: eight)
 
-Attempt.create(user: ife, connection: connection)
-Attempt.create(user: ife, connection: connection_two)
+# Attempt.create(user: ife, connection: connection)
+# Attempt.create(user: ife, connection: connection_two)
 
 # CONNECTIONS SEED
 

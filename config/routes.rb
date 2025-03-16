@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'guesses/create'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: "pages#home"
   get 'toggle_dark_mode', to: 'pages#toggle_dark_mode'
@@ -31,9 +30,13 @@ Rails.application.routes.draw do
     member do
       post "check_guess"
     end
+
+    resources :groups, only: %w[new create]
   end
 
   resources :attempts, only: [] do
     resources :guesses, only: :create
   end
+
+  resources :groups, only: %w[edit update destroy]
 end

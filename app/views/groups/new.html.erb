@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="container mb-5">
+    <div class="build-connections-container">
+      <h3 class="boldest text-center mt-5 mb-4 <%= @dark_mode ? 'grey' : 'black' %>">Build your Connections</h3>
+
+      <% @connection.groups.each_with_index do |group, index| %>
+        <div class="formed-group <%= group.level %> mb-2">
+          <h5><%= group.title %></h5>
+          <p class="mb-0"><%= group.words.join(", ") %></p>
+        </div>
+      <% end %>
+
+      <% case @connection.groups.count %>
+      <% when 0 %>
+        <%= render 'form', connection: @connection, group: @group, level: "easy" %>
+      <% when 1 %>
+        <%= render 'form', connection: @connection, group: @group, level: "medium" %>
+      <% when 2 %>
+        <%= render 'form', connection: @connection, group: @group, level: "hard" %>
+      <% when 3 %>
+        <%= render 'form', connection: @connection, group: @group, level: "very-hard" %>
+      <% end %>
+    </div>
+  </div>
+</div>

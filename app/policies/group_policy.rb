@@ -1,4 +1,4 @@
-class ConnectionPolicy < ApplicationPolicy
+class GroupPolicy < ApplicationPolicy
   # NOTE: Up to Pundit v2.3.1, the inheritance was declared as
   # `Scope < Scope` rather than `Scope < ApplicationPolicy::Scope`.
   # In most cases the behavior will be identical, but if updating existing
@@ -10,14 +10,6 @@ class ConnectionPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
-  end
-
-  def show?
-    user
-  end
-
-  def check_guess?
-    show?
   end
 
   def new?

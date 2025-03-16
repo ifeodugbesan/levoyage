@@ -2,8 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="guesses"
 export default class extends Controller {
-  static targets = ["form", "checkbox", "deselect", "label", "submit", "gridContainer", "grid", "popup",
-                    "mistake", "mistakesContainer", "buttons", "formContainer", "resultsContainer", "container"]
+  static targets = ["form", "checkbox", "deselect", "label", "submit", "gridContainer", "grid", "popup", "mistake",
+                    "mistakesContainer", "buttons", "formContainer", "resultsContainer", "container", "group"]
 
   connect() {
   }
@@ -131,6 +131,18 @@ export default class extends Controller {
           setTimeout(() => {
             this.containerTarget.insertAdjacentHTML("afterbegin", data.inserted_results)
           }, 2100);
+
+          setTimeout(() => {
+            const buttons = `
+              <div class="d-flex align-items-center justify-content-center mt-3 back-to-connections">
+                <p class="secondary-button con-btn" data-action="click->guesses#showResults" data-guesses-target="deselect">VIEW RESULTS</p>
+                <a class="btn secondary-button" href="/connections">GO BACK TO CONNECTIONS</a>
+              </div>
+            `
+            this.formContainerTarget.insertAdjacentHTML("beforeend", buttons)
+            this.buttonsTarget.classList.add('d-none');
+            this.mistakesContainerTarget.classList.add('d-none');
+          }, 2100);
         }
 
         // INSERTING COMPLETED GROUP
@@ -145,9 +157,11 @@ export default class extends Controller {
             this.gridTarget.insertAdjacentHTML("afterbegin", group)
           }, 1200);
 
-          setTimeout(() => {
-            this.formContainerTarget.innerHTML = data.inserted_item
-          }, 1600);
+          if (!data.complete) {
+            setTimeout(() => {
+              this.formContainerTarget.innerHTML = data.inserted_item
+            }, 1600);
+          }
         }
 
         // PLAYER HAS COMPLETED CONNECTIONS
@@ -159,6 +173,11 @@ export default class extends Controller {
           setTimeout(() => {
             this.popupTarget.remove()
           }, 6000);
+
+          setTimeout(() => {
+            this.groupTargets.forEach(group => group.classList.remove('reveal'))
+          }, 1600);
+
         }
 
         // PLAYER HAS FAILED CONNECTIONS
@@ -180,18 +199,6 @@ export default class extends Controller {
           }, 2100);
           setTimeout(() => {
             this.gridContainerTarget.insertAdjacentHTML("beforeend", data.inserted_unsolved)
-          }, 2100);
-          
-          setTimeout(() => {
-            const buttons = `
-              <div class="d-flex align-items-center justify-content-center mt-3 back-to-connections">
-                <p class="secondary-button con-btn me-3 mb-0" data-action="click->guesses#showResults" data-guesses-target="deselect">VIEW RESULTS</p>
-                <a class="btn secondary-button" href="/connections">GO BACK TO CONNECTIONS</a>
-              </div>
-            `
-            this.formContainerTarget.insertAdjacentHTML("beforeend", buttons)
-            this.buttonsTarget.classList.add('d-none');
-            this.mistakesContainerTarget.classList.add('d-none');
           }, 2100);
         }
 

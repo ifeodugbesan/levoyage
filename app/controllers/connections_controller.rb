@@ -1,9 +1,10 @@
 class ConnectionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :check_guess, :connections_and_words]
+  skip_before_action :authenticate_user!, only: [:index, :check_guess, :connections_and_words]
   before_action :connections_and_words, only: [:show, :check_guess]
 
   def index
-    @connections = policy_scope(Connection)
+    @connections = policy_scope(Connection).select { |c| c.groups.count == 4 }
+    @connections = Kaminari.paginate_array(@connections).page(params[:page]).per(10)
   end
 
   def show
@@ -13,9 +14,22 @@ class ConnectionsController < ApplicationController
   end
 
   def new
+    @connection = Connection.new
+    authorize @connection
   end
 
   def create
+    @connections = current_user.connections
+
+    if @connections.empty? || current_user.latest_connection_is_built?
+      @connection = Connection.create(user: current_user)
+    else
+      @connection = current_user.connections.last
+    end
+
+    authorize @connection
+
+    redirect_to new_connection_group_path(@connection)
   end
 
   def edit

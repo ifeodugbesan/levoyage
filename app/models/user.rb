@@ -26,6 +26,10 @@ class User < ApplicationRecord
     end
   end
 
+  def latest_connection_is_built?
+    connections&.last&.groups&.count == 4
+  end
+
   def signed_in_with_github?
     provider == "github"
   end

@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import BuildController from "./build_controller"
+application.register("build", BuildController)
+
 import GuessesController from "./guesses_controller"
 application.register("guesses", GuessesController)
 

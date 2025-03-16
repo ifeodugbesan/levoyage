@@ -1,0 +1,29 @@
+<%= simple_form_for [connection, group], html: { class: "build-connections-form" } do |f| %>
+  <h5 class="text-center mt-5">Add <%= level.capitalize.gsub("-", " ") %> Connection</h5>
+  <div class="row m-0">
+    <div class="col-12">
+      <p class="text-center">What is the title of your connection?</p>
+      <%= f.input :title, required: true, label: false, input_html: { class: 'form-input', placeholder: 'Colours of the rainbow' } %>
+    </div>
+    <p class="text-center">What 4 words connect with your title? (max 16 characters)</p>
+    <div class="col-6">
+      <input class="form-control string optional form-input" required="required" maxlength="16" placeholder="red" type="text" name="group[words][]" id="group_words_1">
+    </div>
+    <div class="col-6 mb-3">
+      <input class="form-control string optional form-input" required="required" maxlength="16" placeholder="yellow" type="text" name="group[words][]" id="group_words_2">
+    </div>
+    <div class="col-6">
+      <input class="form-control string optional form-input" required="required" maxlength="16" placeholder="green" type="text" name="group[words][]" id="group_words_3">
+    </div>
+    <div class="col-6">
+      <input class="form-control string optional form-input" required="required" maxlength="16" placeholder="blue" type="text" name="group[words][]" id="group_words_4">
+    </div>
+    <% if @group.errors[:words] %>
+      <div class="invalid-feedback d-block"><%= @group.errors[:words].first %></div>
+    <% end %>
+    <%= f.input :level, as: :hidden, input_html: { class: 'form-input', placeholder: 'Colours of the rainbow', value: level } %>
+    <div class="col-12 mt-2 d-flex justify-content-center">
+      <%= f.submit "ADD #{level.upcase.gsub('-', ' ')} CONNECTION!", class: 'primary-button', data: { build_target: 'button' } %>
+    </div>
+  </div>
+<% end %>

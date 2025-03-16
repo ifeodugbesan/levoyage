@@ -185,4 +185,41 @@
       color: #EBEBEB;
     }
   }
+
+  // CONNECTIONS
+
+  .posted {
+    color: #EBEBEB;
+  }
+
+  .connection {
+    background-color: #202020;
+  }
+
+  .connection + label {
+    color: #B0B0B0;
+  }
+
+  .connection:checked + label {
+    background-color: #6C6C6C;
+  }
+
+  .secondary-button {
+    color: #EBEBEB;
+  }
+
+  .formed-group p {
+    color: #000000;
+  }
+
+  .results-container {
+    background: #1E1E1E;
+    i, h3, h6 {
+      color: #FFFFFF;
+    }
+  }
+
+  .connection-stats {
+    border-color: #888888;
+  }
 }

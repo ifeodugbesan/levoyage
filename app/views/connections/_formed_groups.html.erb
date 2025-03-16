@@ -1,5 +1,5 @@
 <% formed_groups.each_with_index do |formed_group, index| %>
-  <div class="formed-group <%= formed_group.group.level %> <%= 'reveal' if failed || @attempt.failed || @attempt.completed %>">
+  <div class="formed-group <%= formed_group.group.level %> <%= 'reveal' if failed || @attempt.failed || @attempt.completed %>" data-guesses-target="group">
     <h5><%= formed_group.group.title %></h5>
     <p class="mb-0"><%= formed_group.group.words.join(", ") %></p>
   </div>
