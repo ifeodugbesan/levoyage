@@ -47,8 +47,8 @@ export default class extends Controller {
       hljs.highlightElement(el);
     });
 
-    console.log(typeof(hljs.getLanguage('bash').keywords))
-    console.log(hljs.getLanguage('bash').keywords)
+    // console.log(typeof(hljs.getLanguage('bash').keywords))
+    // console.log(hljs.getLanguage('bash').keywords)
   }
 
   showForm() {

@@ -4,14 +4,20 @@
 
 import { application } from "./application"
 
+import BuildController from "./build_controller"
+application.register("build", BuildController)
+
+import GuessesController from "./guesses_controller"
+application.register("guesses", GuessesController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import SharedController from "./shared_controller"
-application.register("shared", SharedController)
+import IssuesController from "./issues_controller"
+application.register("issues", IssuesController)
 
 import Select2Controller from "./select2_controller"
 application.register("select2", Select2Controller)
 
-import IssuesController from "./issues_controller"
-application.register("issues", IssuesController)
+import SharedController from "./shared_controller"
+application.register("shared", SharedController)

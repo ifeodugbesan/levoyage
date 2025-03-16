@@ -1,0 +1,27 @@
+<%= form_with model: [@attempt, Guess.new], method: :post, data: { guesses_target: "form", action: "submit->guesses#submitGuess" } do |form| %>
+  <div class="game-grid-container" data-guesses-target="gridContainer">
+    <%= render 'connections/formed_groups', formed_groups: solved_groups, failed: @failed %>
+    <% if @attempt.failed %>
+      <%= render 'connections/formed_groups', formed_groups: unsolved_groups, failed: @failed %>
+    <% elsif remaining_words.any? %>
+      <div class="game-grid" data-guesses-target="grid">
+        <% remaining_words.each_with_index do |word, index| %>
+          <%= form.check_box :words, { multiple: true, class: "d-none connection", id: "guess_#{word}", data: { word: word, guesses_target: "checkbox", action: "change->guesses#checkGuess" } }, word, nil %>
+          <%= form.label word, word, class: "connection", data: { guesses_target: "label" } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <% unless @attempt.completed || @attempt.failed %>
+    <p class="mistakes" data-guesses-target="mistakesContainer">Mistakes remaining: <%= "<i class='fa-solid fa-circle ms-2' data-guesses-target='mistake'></i>".html_safe * attempt.mistakes_remaining %></p>
+    <div class="d-flex align-items-center justify-content-center mt-3" data-guesses-target="buttons">
+      <p class="secondary-button con-btn me-3 mb-0 disabled" data-action="click->guesses#deselect" data-guesses-target="deselect">DESELECT ALL</p>
+      <%= submit_tag "SUBMIT", name: "", class: "primary-button disabled", data: { guesses_target: "submit" } %>
+    </div>
+  <% else %>
+    <div class="mt-3 back-to-connections">
+      <p class="secondary-button con-btn" data-action="click->guesses#showResults" data-guesses-target="deselect">VIEW RESULTS</p>
+      <%= link_to "GO BACK TO CONNECTIONS", connections_path, class: "secondary-button btn" %>
+    </div>
+  <% end %>
+<% end %>

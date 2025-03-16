@@ -1,0 +1,34 @@
+<% if attempt.completed || attempt.failed %>
+  <div class="results-container p-4 d-none" data-guesses-target="resultsContainer">
+    <div class="d-flex align-items-center justify-content-end w-100 close" data-action="click->guesses#close">
+      <p class="mb-0 me-2">Back to puzzle</p>
+      <i class="fa-solid fa-xmark cross" data-guesses-target="cross"></i>
+    </div>
+    <div class="d-flex flex-column align-items-center justify-content-center mt-5">
+      <% if attempt.completed %>
+        <%= image_tag 'completed.svg', width: 60 %>
+      <% else %>
+        <%= image_tag 'failed.svg', width: 60 %>
+      <% end %>
+      <h3 class="text-center mt-4 mb-2"><%= "Great!" if attempt.completed %></h3>
+      <h3 class="text-center mt-4 mb-2"><%= "Unlucky!" if attempt.failed %></h3>
+
+      <div class="connection-stats">
+        <div class="me-3">
+          <h6 class="text-center mb-0"><%= current_user.completed_attempts %></h6>
+          <p class="text-center mb-0">Completed</p>
+        </div>
+        <div class="me-3">
+          <h6 class="text-center mb-0"><%= current_user.connections_percentage %></h6>
+          <p class="text-center mb-0">Win %</p>
+        </div>
+      </div>
+      <div class="results-grid mt-5">
+        <% attempt.guesses.map(&:words).flatten.each do |word| %>
+          <% group = attempt.connection.groups.select { |group| group.words.include?(word) }.first %>
+          <div class="color-block <%= group.level %>"></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -10,3 +10,26 @@ $gray: #0E0000;
 $light-gray: #F4F4F4;
 
 $purple: #590CA3;
+
+// CONNECTIONS COLORS
+
+$easy: #F9DF6D;
+$medium: #A0C35A;
+$hard: #B0C4Ef;
+$very-hard: #BA81C5;
+
+.easy {
+  background-color: $easy !important; 
+}
+
+.medium {
+  background-color: $medium !important; 
+}
+
+.hard {
+  background-color: $hard !important; 
+}
+
+.very-hard {
+  background-color: $very-hard !important; 
+}

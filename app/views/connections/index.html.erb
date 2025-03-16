@@ -1,0 +1,57 @@
+<div class="wrapper">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <div class="results">
+          <span>
+            <%= page_entries_info @connections, entry_name: 'Connection' %>
+          </span>
+          <% if policy(Connection).create? %>
+            <%= link_to connections_path, data: { turbo_method: :post }, class: "text-link" do %>
+              <span class="new-issue pb-1">BUILD YOUR CONNECTIONS <i class="bi bi-plus-lg"></i></span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <% @connections.each do |connection| %>
+        <div class="col-12 col-sm-6 col-lg-4 mb-3">
+          <%= link_to connection_path(connection), class: "each-connection-link" do %>
+            <div class="row mx-0">
+              <% connection.groups.pluck(:words).flatten.each do |word| %>
+                <div class="col-3 px-1 my-1">
+                  <div class="card each-connection d-flex justify-content-center align-items-center px-1 py-4">
+                    <h6 class="mb-0"><%= word %></h6>
+                  </div>
+                </div>
+              <% end %>
+              <div class="col-12 px-0">
+                <div class="d-flex align-items-center justify-content-between m-1">
+                  <div class="d-flex align-items-center">
+                    <%= image_tag connection.user.image_url, class: "avatar-sm me-2" %>
+                    <h4 class="posted mb-0"><%= connection.user.name %></h4>
+                  </div>
+                  <% if user_signed_in? %>
+                    <% @attempt = current_user.attempts.find_by(connection: connection) %>
+                    <% if @attempt&.completed %>
+                      <%= image_tag 'completed.svg', width: 32 %>
+                    <% elsif @attempt&.failed %>
+                      <%= image_tag 'failed.svg', width: 32 %>
+                    <% else %>
+                      <%= image_tag 'unplayed.svg', width: 32 %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="col-12">
+        <div class="my-5 d-flex justify-content-center">
+          <%= paginate @connections %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

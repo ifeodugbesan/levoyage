@@ -23,4 +23,20 @@ Rails.application.routes.draw do
       post 'remove_upvote'
     end
   end
+
+  # CONNECTIONS
+  #
+  resources :connections do
+    member do
+      post "check_guess"
+    end
+
+    resources :groups, only: %w[new create]
+  end
+
+  resources :attempts, only: [] do
+    resources :guesses, only: :create
+  end
+
+  resources :groups, only: %w[edit update destroy]
 end

@@ -1,0 +1,10 @@
+<div class="mt-5 position-relative connections-container" data-controller="guesses" data-guesses-target="container">
+  <%= render "connections/results", attempt: @attempt %>
+  <div class="">
+    <p class="text-center">Create four groups of four!</p>
+    <div id="form" data-guesses-target="formContainer">
+      <%= render "connections/form", connection: @connection, attempt: @attempt, solved_groups: @solved_groups, unsolved_groups: @unsolved_groups, remaining_words: @remaining_words %>
+    </div>
+  </div>
+</div>
+
