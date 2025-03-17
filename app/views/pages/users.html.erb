@@ -1,24 +1,22 @@
 <div class="wrapper my-5">
   <div class="row">
     <% 30.times do %>
-      <% @users.each do |user| %>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-          <div class="card p-2 rounded-3">
-            <div class="subject-user">
-              <%= image_tag user.image_url, class: "avatar me-2", style: "border: 1px solid yellow" %>
-              <div class="">
-                <h4 class="posted mb-0"><%= user.name %></h4>
-                <hr class="my-1">
-                <p class="posted mb-0">Issue's posted: <%= user.issues.count %></p>
-                <p class="posted mb-0">Resources posted: <%= user.resources.count %></p>
-                <hr class="my-1">
-                <p class="posted mb-0">Connections created: <%= user.connections.select { |c| c.groups.count == 4 }.count %></p>
-                <p class="posted mb-0">Attempts made: <%= user.attempts.select { |a| a.failed || a.completed }.count %></p>
-              </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card p-2 rounded-3">
+          <div class="subject-user">
+            <%= image_tag user.image_url, class: "avatar me-2", style: "border: 1px solid yellow" %>
+            <div class="">
+              <h4 class="posted mb-0"><%= user.name %></h4>
+              <hr class="my-1">
+              <p class="posted mb-0">Issue's posted: <%= user.issues.count %></p>
+              <p class="posted mb-0">Resources posted: <%= user.resources.count %></p>
+              <hr class="my-1">
+              <p class="posted mb-0">Connections created: <%= user.connections.select { |c| c.groups.count == 4 }.count %></p>
+              <p class="posted mb-0">Attempts made: <%= user.attempts.select { |a| a.failed || a.completed }.count %></p>
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>
