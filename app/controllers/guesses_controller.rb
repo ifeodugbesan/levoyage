@@ -24,8 +24,8 @@ class GuessesController < ApplicationController
       @group_connections.each do |group_connection|
         group = group_connection.group
         if (group.words - @guess.words).empty?
-          group_connection.update(solved: true)
-          @solved_group = { title: group_connection.group.title, words: group_connection.group.words.join(", "), level: group_connection.group.level }
+          solved = SolvedGroup.create(attempt: @attempt, group: group)
+          @solved_group = { title: solved.group.title, words: solved.group.words.join(", "), level: solved.group.level }
           @success = true
           @wrong = false
           break
@@ -35,10 +35,10 @@ class GuessesController < ApplicationController
           @wrong = true unless @success
         end
       end
-      @unsolved_groups = @group_connections.reject(&:solved)
+      @unsolved_groups = @group_connections.reject { |gc| @attempt.groups.include?(gc.group) }
       @remaining_words = @unsolved_groups.map { |gc| gc.group.words }.flatten.shuffle
-      @solved_groups = @group_connections.select(&:solved).sort_by(&:updated_at)
-      @attempt.update(completed: true) if @solved_groups.size == 4
+      @solved_groups = SolvedGroup.where(attempt: @attempt)
+      @attempt.update(completed: true) if @attempt.groups.size == 4
       @attempt.update(mistakes_remaining: @attempt.mistakes_remaining - 1) unless @success
       if @attempt.mistakes_remaining.zero?
         @attempt.update(failed: true)
@@ -56,8 +56,8 @@ class GuessesController < ApplicationController
     @group_connections = @connection.group_connections
     @connections = @connection.groups
     @words = @connections.pluck(:words).flatten
-    @solved_groups = @group_connections.select(&:solved).sort_by(&:updated_at)
-    @unsolved_groups = @group_connections.reject(&:solved)
+    @solved_groups = SolvedGroup.where(attempt: @attempt)
+    @unsolved_groups = @group_connections.reject { |gc| @attempt.groups.include?(gc.group) }
     @remaining_words = @unsolved_groups.map { |gc| gc.group.words }.flatten.shuffle
   end
 

@@ -159,7 +159,7 @@ export default class extends Controller {
 
           if (!data.complete) {
             setTimeout(() => {
-              this.formContainerTarget.innerHTML = data.inserted_item
+              this.formContainerTarget.innerHTML = data.inserted_item;
             }, 1600);
           }
         }

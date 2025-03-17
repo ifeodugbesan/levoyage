@@ -8,9 +8,6 @@ class ConnectionsController < ApplicationController
   end
 
   def show
-    @connection = Connection.find(params[:id])
-    authorize @connection
-    @attempt = Attempt.find_or_create_by(user: current_user, connection: @connection)
   end
 
   def new
@@ -46,12 +43,13 @@ class ConnectionsController < ApplicationController
   def connections_and_words
     @connection = Connection.find(params[:id])
     authorize @connection
+    @attempt = Attempt.find_or_create_by(user: current_user, connection: @connection)
 
     @group_connections = @connection.group_connections
     @connections = @connection.groups
     @words = @connections.pluck(:words).flatten
-    @solved_groups = @group_connections.select(&:solved).sort_by(&:updated_at)
-    @unsolved_groups = @group_connections.reject(&:solved)
+    @solved_groups = SolvedGroup.where(attempt: @attempt)
+    @unsolved_groups = @group_connections.reject { |gc| @attempt.groups.include?(gc.group) }
     @remaining_words = @unsolved_groups.map { |gc| gc.group.words }.flatten.shuffle
   end
 end

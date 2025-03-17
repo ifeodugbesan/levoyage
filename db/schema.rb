@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_03_14_154844) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_17_124012) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -140,6 +140,15 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_14_154844) do
     t.index ["user_id"], name: "index_resources_on_user_id"
   end
 
+  create_table "solved_groups", force: :cascade do |t|
+    t.bigint "attempt_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attempt_id"], name: "index_solved_groups_on_attempt_id"
+    t.index ["group_id"], name: "index_solved_groups_on_group_id"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.bigint "tag_id"
     t.string "taggable_type"
@@ -218,5 +227,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_14_154844) do
   add_foreign_key "guesses", "attempts"
   add_foreign_key "issues", "users"
   add_foreign_key "resources", "users"
+  add_foreign_key "solved_groups", "attempts"
+  add_foreign_key "solved_groups", "groups"
   add_foreign_key "taggings", "tags"
 end

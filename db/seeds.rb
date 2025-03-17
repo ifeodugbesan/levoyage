@@ -1,6 +1,7 @@
 
 # CONNECTIONS SEED
 
+SolvedGroup.destroy_all
 GroupConnection.destroy_all
 Group.destroy_all
 Guess.destroy_all
