@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div class="container mt-5">
+    <div class="row">
+      <h4 class="mb-5 text-center">Game on! A Snapshot of How Players Are Doing</h4>
+      <% @connections.each do |connection| %>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <div class="row mx-0">
+            <% connection.groups.pluck(:words).flatten.each do |word| %>
+              <div class="col-3 px-1 my-1">
+                <div class="card each-connection d-flex justify-content-center align-items-center px-1 py-4">
+                  <h6 class="mb-0"><%= word %></h6>
+                </div>
+              </div>
+            <% end %>
+            <div class="col-12 px-0">
+              <div class="connection-stats mt-1">
+                <div class="me-3">
+                  <h6 class="text-center mb-0"><%= connection.completed_attempts %></h6>
+                  <p class="text-center mb-0">Completed</p>
+                </div>
+                <div class="me-3">
+                  <h6 class="text-center mb-0"><%= connection.connections_percentage %></h6>
+                  <p class="text-center mb-0">Win %</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

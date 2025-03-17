@@ -3,8 +3,13 @@ class ConnectionsController < ApplicationController
   before_action :connections_and_words, only: [:show, :check_guess]
 
   def index
-    @connections = policy_scope(Connection).select { |c| c.groups.count == 4 }
+    @connections = policy_scope(Connection).select { |c| c.groups.count == 4 }.sort_by { |c| c.created_at }.reverse
     @connections = Kaminari.paginate_array(@connections).page(params[:page]).per(10)
+  end
+
+  def stats
+    @connections = current_user.connections.select { |c| c.complete }
+    @connections.each { |connection| authorize connection }
   end
 
   def show

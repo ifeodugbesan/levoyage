@@ -221,5 +221,13 @@
 
   .connection-stats {
     border-color: #888888;
+    h6 {
+      color: #B0B0B0;
+    }
+  }
+
+  .each-connection {
+    background-color: #202020;
+    color: #B0B0B0;
   }
 }

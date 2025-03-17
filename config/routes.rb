@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     member do
       post "check_guess"
     end
+    collection do
+      get "stats"
+    end
 
     resources :groups, only: %w[new create]
   end

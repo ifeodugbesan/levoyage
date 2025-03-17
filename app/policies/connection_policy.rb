@@ -12,6 +12,10 @@ class ConnectionPolicy < ApplicationPolicy
     end
   end
 
+  def stats?
+    user
+  end
+
   def show?
     user
   end
