@@ -1,5 +1,6 @@
 class Group < ApplicationRecord
   belongs_to :user
+  has_many :group_connections, dependent: :destroy
   validates :title, presence: true
   validate :all_four_words
 
