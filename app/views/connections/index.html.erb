@@ -22,7 +22,7 @@
       </div>
       <div class="connections-grid">
         <% @connections.each do |connection| %>
-          <%= link_to connection_path(connection), class: "each-connection-link #{ 'pe-none' if connection.user == current_user }" do %>
+          <%= link_to connection_path(connection), class: "each-connection-link #{ 'disabled' if connection.user == current_user }" do %>
             <div class="d-flex align-items-center justify-content-between m-1 position-relative">
               <% if user_signed_in? %>
                 <% @attempt = current_user.attempts.find_by(connection: connection) %>
