@@ -34,6 +34,10 @@ class User < ApplicationRecord
     provider == "github"
   end
 
+  def has_connections_ready?
+    connections.select { |c| c.groups&.count == 4 }.any?
+  end
+
   def completed_attempts
     attempts.select { |a| a.completed || a.failed }.size
   end

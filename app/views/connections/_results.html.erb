@@ -23,11 +23,16 @@
           <p class="text-center mb-0">Win %</p>
         </div>
       </div>
-      <div class="results-grid mt-5">
+      <div class="results-grid mt-4">
         <% attempt.guesses.map(&:words).flatten.each do |word| %>
           <% group = attempt.connection.groups.select { |group| group.words.include?(word) }.first %>
           <div class="color-block <%= group.level %>"></div>
         <% end %>
+      </div>
+      <div class="d-flex justify-content-center align-items-center mt-5">
+        <p class="mb-0 me-2">Created by: </p>
+        <%= image_tag attempt.connection.user.image_url, class: "avatar" %>
+        <p class="ms-1 mb-0"><%= attempt.connection.user.name %></p>
       </div>
     </div>
   </div>
