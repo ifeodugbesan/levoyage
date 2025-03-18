@@ -4,7 +4,7 @@
     <% if @attempt.failed %>
       <%= render 'connections/formed_groups', formed_groups: unsolved_groups, failed: @failed %>
     <% elsif remaining_words.any? %>
-      <div class="game-grid" data-guesses-target="grid">
+      <div class="game-grid reveal" data-guesses-target="grid">
         <% remaining_words.each_with_index do |word, index| %>
           <%= form.check_box :words, { multiple: true, class: "d-none connection", id: "guess_#{word}", data: { word: word, guesses_target: "checkbox", action: "change->guesses#checkGuess" } }, word, nil %>
           <%= form.label word, word, class: "connection", data: { guesses_target: "label" } %>

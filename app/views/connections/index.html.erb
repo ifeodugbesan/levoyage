@@ -23,7 +23,7 @@
       <div class="connections-grid">
         <% @connections.each do |connection| %>
           <%= link_to connection_path(connection), class: "each-connection-link #{ 'disabled' if connection.user == current_user }" do %>
-            <div class="d-flex align-items-center justify-content-between m-1">
+            <div class="d-flex align-items-center justify-content-between m-1 position-relative">
               <% if user_signed_in? %>
                 <% @attempt = current_user.attempts.find_by(connection: connection) %>
                 <% if @attempt&.completed %>
@@ -36,6 +36,9 @@
               <% else %>
                   <%= image_tag 'unplayed.svg', width: 64 %>
               <% end %>
+              <div class="creator">
+                <%= image_tag connection.user.image_url, class: "avatar-sm" %><p class="ms-1"><%= connection.user.name %></p>
+              </div>
             </div>
           <% end %>
         <% end %>
