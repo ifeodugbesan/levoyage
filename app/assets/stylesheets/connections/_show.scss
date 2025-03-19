@@ -39,10 +39,12 @@ body {
   transition: border 0.2s ease;
   &:hover {
     border: 1px solid #CCCCCC;
-    .creator {
-      display: flex;
-      opacity: 1;
-      animation: show 0.4s ease;
+    @include media-breakpoint-up(sm) {
+      .creator {
+        display: flex;
+        opacity: 1;
+        animation: show 0.4s ease;
+      }
     }
   }
   @include media-breakpoint-down(sm) {
@@ -67,10 +69,9 @@ body {
 .connections-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
   animation: show 1s ease;
-  max-width: 624px;
+  max-width: 468px;
   margin: 80px auto 0 !important;
   @include media-breakpoint-down(md) {
     margin: 16px auto 0 !important;
