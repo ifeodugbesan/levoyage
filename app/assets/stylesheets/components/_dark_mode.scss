@@ -208,8 +208,10 @@
     color: #EBEBEB;
   }
 
-  .formed-group p {
-    color: #000000;
+  .formed-group {
+    p, h5 {
+      color: #000000;
+    }
   }
 
   .results-container {

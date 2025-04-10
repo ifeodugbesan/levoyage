@@ -36,6 +36,8 @@
 
 .accordion-body {
   padding: 0;
+  max-height: 92px;
+  overflow: scroll;
 }
 
 .accordion-button {

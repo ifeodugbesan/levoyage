@@ -1,10 +1,10 @@
 <div class="wrapper" data-controller="issues">
   <div class="issues-wrapper">
     <%#= link_to 'https://www.instagram.com/kobrasfc/', target: '_blank' do %>
-      <!-- <div class="top-ad" style="background-image: url(<%#= asset_path 'kobra-ad.png' %>)"></div> -->
+      <!-- <div class="top-banner" style="background-image: url(<%#= asset_path 'kobra-ad.png' %>)"></div> -->
     <%# end %>
     <%= link_to 'https://localista.ai/', target: '_blank' do %>
-      <div class="top-ad" style="background-image: url(<%= asset_path 'localista.png' %>)"></div>
+      <div class="top-banner" style="background-image: url(<%= asset_path 'localista.png' %>)"></div>
     <% end %>
     <%= form_with url: resources_path, method: "GET", html: { class: 'form-inline' } do |f| %>
       <div class="mb-3 string required search_query">
@@ -89,9 +89,9 @@
           <%= paginate @resources %>
         </div>
       </div>
-      <div class="side-ad-container">
+      <div class="side-banner-container">
         <%= link_to 'https://uikit.lewagon.com/', target: '_blank' do  %>
-          <div class="side-ad" style="background-image: url(<%= asset_path 'ui-kit-ad.png' %>)"></div>
+          <div class="side-banner" style="background-image: url(<%= asset_path 'ui-kit-ad.png' %>)"></div>
         <% end %>
       </div>
     </div>
