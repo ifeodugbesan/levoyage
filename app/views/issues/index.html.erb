@@ -1,11 +1,8 @@
 <div class="wrapper" data-controller="issues">
   <div class="issues-wrapper">
     <%= link_to 'https://lightningrails.com/', target: '_blank' do %>
-      <div class="top-ad" style="background-image: url(<%= asset_path 'lightning-rails.png' %>)"></div>
+      <div class="top-banner" style="background-image: url(<%= asset_path 'lightning-rails.png' %>)"></div>
     <% end %>
-    <%#= link_to 'https://kitt.lewagon.com/knowledge/tutorials', target: '_blank' do %>
-<!--      <div class="top-ad" style="background-image: url(<%#= asset_path 'le-wagon-ad.png' %>)"></div>-->
-    <%# end %>
     <%= form_with url: issues_path, method: "GET", html: { class: 'form-inline' } do |f| %>
       <div class="mb-3 string required search_query">
         <%= text_field_tag :query, params[:query], label: false, placeholder: "What issue are you having?", class: 'form-input form-control', value: params[:query] %>
@@ -13,11 +10,11 @@
       <div class="accordion" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" data-issues-target="tagsBtn">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" data-issues-target="tagsBtn">
               Tags
             </button>
           </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" data-issues-target="tags">
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" data-issues-target="tags">
             <div class="accordion-body">
               <fieldset class="mb-3 check_boxes required tags">
                 <input type="hidden" name="tags[]" value="" autocomplete="off">
@@ -79,9 +76,9 @@
           <%= paginate @issues %>
         </div>
       </div>
-      <div class="side-ad-container">
+      <div class="side-banner-container">
         <%= link_to 'https://kitt.lewagon.com/knowledge/tutorials', target: '_blank' do  %>
-          <div class="side-ad" style="background-image: url(<%= asset_path 'tutorials-ad.png' %>)"></div>
+          <div class="side-banner" style="background-image: url(<%= asset_path 'tutorials-ad.png' %>)"></div>
         <% end %>
       </div>
     </div>

@@ -98,7 +98,7 @@
   }
 }
 
-.top-ad {
+.top-banner {
   width: 100%;
   height: 160px;
   // background-color: #EAEAEA;
@@ -109,9 +109,10 @@
   }
 }
 
-.side-ad {
+.side-banner {
   width: 220px;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   position: sticky;
   top: 24px;
   flex-shrink: 0;
@@ -119,7 +120,7 @@
   min-height: 370px;
 }
 
-.side-ad-container {
+.side-banner-container {
   margin-left: 24px;
   a {
     height: calc(100vh - 152px);
